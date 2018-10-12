@@ -1,21 +1,23 @@
-import java.io.FileOutputStream;
-import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Garage implements Serializable {
-	
-	String garage_content = "Garage is under construction";
-	
+
+	ArrayList<String> al_content = new ArrayList<String>();
+
 	Garage() {
 		System.out.println("Hello Garage");
 	}
 
 	@Override
 	public String toString() {
-		return garage_content;
+		String returnText ="";
+		for (int i = 0; i < al_content.size(); i++)
+			returnText += " " + (String) al_content.get(i);
+		return returnText;
 	}
-	
-	public void add (String nomVoiture) {
-		garage_content = nomVoiture;
+
+	public void add(String nomVoiture) {
+		al_content.add(nomVoiture);
 	}
 }

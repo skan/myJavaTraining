@@ -10,10 +10,11 @@ import java.io.ObjectOutputStream;
 public class Main {
 	public static void main(String[] args) {
 		Garage garage = new Garage();
-		garage = load ();
-		//garage.add("Skooda");
+		//garage = load ();
+		garage.add("Skooda");
+		garage.add("peugeot");
 		System.out.println(garage);
-		//save(garage);
+		save(garage);
 	}
 
 	static void save(Garage garage) {

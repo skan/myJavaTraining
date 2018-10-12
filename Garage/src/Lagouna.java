@@ -7,8 +7,4 @@ public class Lagouna extends Vehicule {
 		this.prix = (double)23123;
 	}
 
-	public void addOption(String optionToAdd) {
-		this.option.add(optionToAdd);
-	}
-
 }

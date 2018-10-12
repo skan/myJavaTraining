@@ -11,9 +11,11 @@ public class Garage implements Serializable {
 
 	@Override
 	public String toString() {
-		String returnText ="";
+		String returnText ="************************\n";
+		returnText +="* Garage Open Classroom \n";
+		returnText +="************************\n";
 		for (int i = 0; i < al_content.size(); i++)
-			returnText += " " + (String) al_content.get(i);
+			returnText += " + Voiture " + (String) al_content.get(i) +"\n";
 		return returnText;
 	}
 

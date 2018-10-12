@@ -9,32 +9,44 @@ import java.io.ObjectOutputStream;
 public class Main {
 	public static void main(String[] args) {
 		Garage garage = new Garage();
-		File f = new File("garage.txt");
-		if (f.isFile() && f.canRead())
-		   garage = load ();
 
-		Vehicule lag1 = new Lagouna();
-		garage.addVoiture(lag1);
-		
-		Vehicule A300B_2  = new A300B();
-		
-		Vehicule d4_1 = new D4();
-		garage.addVoiture(d4_1);
-		
-		Vehicule lag2 = new Lagouna();
-		garage.addVoiture(lag2);
-		
-		Vehicule A300B_1  = new A300B();
-		garage.addVoiture(A300B_1);
-		
-		Vehicule d4_2 = new D4();
-		garage.addVoiture(d4_2);
+		File f = new File("garage.txt");
+
+		/*
+		 * if (f.isFile() && f.canRead()) { garage = load(); } else
+		 */ {
+			Vehicule lag1 = new Lagouna();
+			garage.addVoiture(lag1);
+			lag1.setMoteur(new MoteurEssence("150 Chevaux", 10256d));
+
+			Vehicule A300B_2 = new A300B();
+			A300B_2.setMoteur(new MoteurElectrique("1500 W", 1234d));
+
+			Vehicule d4_1 = new D4();
+			d4_1.setMoteur(new MoteurDiesel("200 Hdi", 25684.80d));
+
+			garage.addVoiture(d4_1);
+
+			Vehicule lag2 = new Lagouna();
+			lag2.setMoteur(new MoteurDiesel("500 Hdi", 456987d));
+
+			garage.addVoiture(lag2);
+
+			Vehicule A300B_1 = new A300B();
+			A300B_1.setMoteur(new MoteurHybride("ESSENCE/Electrique", 12345.95d));
+
+			garage.addVoiture(A300B_1);
+
+			Vehicule d4_2 = new D4();
+			d4_2.setMoteur(new MoteurElectrique("100 KW", 1224d));
+			d4_2.setMoteur(new MoteurElectrique("100 KW", 1224d));
+
+			garage.addVoiture(d4_2);
+
+			// save(garage);
+		}
 
 		System.out.println(garage);
-
-		save(garage);
-
-		// System.out.println(lag1);
 	}
 
 	static void save(Garage garage) {

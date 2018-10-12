@@ -6,15 +6,21 @@ abstract class Vehicule implements Serializable{
 	protected String nom;
 	protected List<String> option;
 	protected String marque;
+	protected Moteur moteur;
 	
 	public String toString() {
 		String toPrint = "+ Voiture ";
 		toPrint += this.marque + " : ";
 		toPrint += this.nom;
-		toPrint += " Moteur " + "TBD" + " (" + this.prix + "€)" ;
+		//toPrint += " Moteur " + "TBD" + " (" + this.prix + "€)" ;
+		toPrint += this.moteur.toString();
 		toPrint += "[ Options " + "TBD ]" ;
 		toPrint += " d'une valeur totale de " + this.prix + " €";		
 		return toPrint;
+	}
+	
+	public void setMoteur(Moteur moteur) {
+		this.moteur = moteur;
 	}
 	
 	protected void addOption (String optionToAdd) {

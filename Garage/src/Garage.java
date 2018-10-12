@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class Garage implements Serializable {
 
-	ArrayList<String> al_content = new ArrayList<String>();
+	ArrayList<Vehicule> al_content = new ArrayList<Vehicule>();
 
 	Garage() {
 		System.out.println("Hello Garage");
@@ -15,11 +15,11 @@ public class Garage implements Serializable {
 		returnText +="* Garage Open Classroom \n";
 		returnText +="************************\n";
 		for (int i = 0; i < al_content.size(); i++)
-			returnText += " + Voiture " + (String) al_content.get(i) +"\n";
+			returnText += al_content.get(i).toString() +"\n";
 		return returnText;
 	}
 
-	public void add(String nomVoiture) {
+	public void addVoiture(Vehicule nomVoiture) {
 		al_content.add(nomVoiture);
 	}
 }

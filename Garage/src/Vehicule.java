@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.List;
 
-abstract class Vehicule {
+abstract class Vehicule implements Serializable{
 	protected Double prix;
 	protected String nom;
 	protected List<String> option;

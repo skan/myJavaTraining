@@ -12,12 +12,14 @@ public class Main {
 		Garage garage = new Garage();
 		//garage = load ();
 		Vehicule lag1 = new Lagouna();
-		garage.add("Skooda");
-		garage.add("peugeot");
+		//garage.add("Skooda");
+		//garage.add("peugeot");
+		garage.addVoiture(lag1);
 		System.out.println(garage);
+		
 		save(garage);
 		
-		System.out.println(lag1);
+		//System.out.println(lag1);
 	}
 
 	static void save(Garage garage) {

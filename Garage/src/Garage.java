@@ -13,16 +13,5 @@ public class Garage implements Serializable {
 		return garage_content;
 	}
 
-	public void save() {
-		try {
-			String filepath = "garage.txt";
-			FileOutputStream fileOut = new FileOutputStream(filepath);
-			ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
-			objectOut.writeObject(this);
-			objectOut.close();
-			System.out.println("The Garage is succesfully saved");
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
-	}
+
 }

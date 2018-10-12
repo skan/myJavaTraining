@@ -3,7 +3,7 @@ public class Lagouna extends Vehicule {
 
 	Lagouna() {
 		this.nom = "Lagouna";
-		this.marque = "Reno";
+		this.marque = "RENO";
 		this.prix = (double)23123;
 	}
 

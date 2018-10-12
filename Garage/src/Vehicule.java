@@ -7,8 +7,13 @@ abstract class Vehicule {
 	protected String marque;
 	
 	public String toString() {
-		String VehiculeCharac = this.nom;
-		return VehiculeCharac;
+		String toPrint = "+ Voiture ";
+		toPrint += this.marque + " : ";
+		toPrint += this.nom;
+		toPrint += " Moteur " + "TBD" + " (" + this.prix + "€)" ;
+		toPrint += "[ Options " + "TBD ]" ;
+		toPrint += " d'une valeur totale de " + this.prix + " €";		
+		return toPrint;
 	}
 	
 	protected void addOption (String optionToAdd) {

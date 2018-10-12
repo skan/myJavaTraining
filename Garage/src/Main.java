@@ -16,6 +16,8 @@ public class Main {
 		garage.add("peugeot");
 		System.out.println(garage);
 		save(garage);
+		
+		System.out.println(lag1);
 	}
 
 	static void save(Garage garage) {

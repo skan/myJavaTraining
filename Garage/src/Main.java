@@ -7,14 +7,13 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 
-
 public class Main {
 	public static void main(String[] args) {
 		Garage garage = new Garage();
+		garage = load ();
+		//garage.add("Skooda");
 		System.out.println(garage);
 		//save(garage);
-		garage = load ();
-		System.out.println(garage);
 	}
 
 	static void save(Garage garage) {
@@ -30,7 +29,6 @@ public class Main {
 			ex.printStackTrace();
 		}
 	}
-
 	static Garage load() {
 		FileInputStream fis = null;
 		ObjectInputStream ois = null;

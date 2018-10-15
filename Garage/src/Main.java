@@ -11,10 +11,11 @@ public class Main {
 		Garage garage = new Garage();
 
 		File f = new File("garage.txt");
-
-		/*
-		 * if (f.isFile() && f.canRead()) { garage = load(); } else
-		 */ {
+		boolean isLoadOk = false;
+		
+		if (f.isFile() && f.canRead() && isLoadOk) {
+			garage = load();
+		} else {
 			Vehicule lag1 = new Lagouna();
 			garage.addVoiture(lag1);
 			lag1.setMoteur(new MoteurEssence("150 Chevaux", 10256d));
@@ -90,5 +91,4 @@ public class Main {
 		}
 		return garage;
 	}
-
 }

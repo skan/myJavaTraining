@@ -4,7 +4,7 @@ import java.util.List;
 abstract class Vehicule implements Serializable{
 	protected Double prix;
 	protected String nom;
-	protected List<String> option;
+	protected List<Option> options;
 	protected String marque;
 	protected Moteur moteur;
 	
@@ -31,11 +31,11 @@ abstract class Vehicule implements Serializable{
 		return this.marque;
 	}
 	
-	/*String getOptions(){
-		for (int i = 0; i < option.size(); i++)
-			returnText += " + Voiture " + (String) option.get(i) +"\n";
-		return returnText
-	}*/
+	String getOptions(){
+		for (int i = 0; i < options.size(); i++)
+			returnText += option.getPrix(); + (String) option.get(i) +"\n";
+		return returnText;
+	}
 	
 	Double getPrix() {
 		return prix;

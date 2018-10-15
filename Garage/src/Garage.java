@@ -6,7 +6,7 @@ public class Garage implements Serializable {
 	ArrayList<Vehicule> al_content = new ArrayList<Vehicule>();
 
 	Garage() {
-		System.out.println("Hello Garage");
+
 	}
 
 	@Override

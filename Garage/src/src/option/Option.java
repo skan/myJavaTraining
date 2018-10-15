@@ -1,7 +1,6 @@
 package src.option;
 
-
-public interface Option {
+public interface Option{
 	
-	default public double getPrix() ;
+	public double getPrix();
 }

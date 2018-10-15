@@ -21,11 +21,11 @@ public class Main {
 		Garage garage = new Garage();
 
 		File f = new File("garage.txt");
-		boolean isLoadOk = false;
-/*
+		boolean isLoadOk = true;
+
 		if (f.isFile() && f.canRead() && isLoadOk) {
 			garage = load();
-		} else*/ {
+		} else {
 
 			Vehicule lag1 = new Lagouna();
 		   	 lag1.setMoteur(new MoteurEssence("150 Chevaux", 10256d));
@@ -67,7 +67,7 @@ public class Main {
 		   	 d4_2.addOption(new VitreElectrique());
 		   	 garage.addVoiture(d4_2); 
 
-			// save(garage);
+			 save(garage);
 		}
 
 		System.out.println(garage);

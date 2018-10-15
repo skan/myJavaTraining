@@ -1,3 +1,5 @@
+package src.moteur;
+
 
 public enum TypeMoteur {
 	DIESEL("Moteur Diesel"), ESSENCE("Moteur Essence"), HYBRIDE("Moteur Hybride"), ELECTRIQUE("Moteur Electrique");

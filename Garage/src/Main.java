@@ -6,6 +6,11 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+import src.moteur.MoteurDiesel;
+import src.moteur.MoteurElectrique;
+import src.moteur.MoteurEssence;
+import src.moteur.MoteurHybride;
+
 public class Main {
 	public static void main(String[] args) {
 		Garage garage = new Garage();
@@ -16,6 +21,10 @@ public class Main {
 		if (f.isFile() && f.canRead() && isLoadOk) {
 			garage = load();
 		} else {
+			//Option gps = new GPS();
+			//System.out.println(gps.getName());
+			
+			
 			Vehicule lag1 = new Lagouna();
 			garage.addVoiture(lag1);
 			lag1.setMoteur(new MoteurEssence("150 Chevaux", 10256d));

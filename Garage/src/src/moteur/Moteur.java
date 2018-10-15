@@ -1,6 +1,8 @@
+package src.moteur;
+
 import java.io.Serializable;
 
-abstract class Moteur implements Serializable{
+public abstract class Moteur implements Serializable{
 	protected TypeMoteur Moteur;
 	protected String Cylindre;
 	protected Double Prix;

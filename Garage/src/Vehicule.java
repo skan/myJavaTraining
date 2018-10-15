@@ -16,8 +16,14 @@ abstract class Vehicule implements Serializable {
 		String toPrint = "+ Voiture ";
 		toPrint += this.marque + " : ";
 		toPrint += this.nom;
-		toPrint += this.moteur.toString();
-		toPrint += "[ Options " + "TBD ]";
+		toPrint += this.moteur.toString() + "[";
+		for (int i = 0; i < myOption.size(); i++)
+		{
+			if (i != 0)
+				toPrint += ", ";
+			toPrint += myOption.get(i).getClass().getSimpleName() + " (" + myOption.get(i).getPrix()+"€)";
+		}
+		toPrint += "]";
 		toPrint += " d'une valeur totale de " + this.prix + " €";
 		return toPrint;
 	}
@@ -32,8 +38,7 @@ abstract class Vehicule implements Serializable {
 	
 	public void getOption() {
 		String text = "";
-		for (int i = 0; i < myOption.size(); i++)
-			text += myOption.get(i).getClass().getSimpleName() + "(" + myOption.get(i).getPrix()+")";
+		
 		System.out.println(text);
 	}
 

@@ -1,8 +1,10 @@
 package src.option;
 
 public class GPS implements Option {
-	public GPS() {
-		System.out.println("hello GPS");
+	private double prix = 113.5;
+	public double getPrix() {
+		return this.prix;
 	}
+	
 
 }

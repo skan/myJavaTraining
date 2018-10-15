@@ -1,4 +1,5 @@
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import src.moteur.Moteur;
@@ -7,7 +8,7 @@ import src.option.Option;
 abstract class Vehicule implements Serializable {
 	protected Double prix;
 	protected String nom;
-	protected List<Option> option;
+	protected List<Option> myOption = new ArrayList<Option>();
 	protected String marque;
 	protected Moteur moteur;
 
@@ -25,24 +26,21 @@ abstract class Vehicule implements Serializable {
 		this.moteur = moteur;
 	}
 
-	protected void addOption(String optionToAdd) {
-
+	protected void addOption(Option optionToAdd) {
+		myOption.add(optionToAdd);
+	}
+	
+	public void getOption() {
+		String text = "";
+		for (int i = 0; i < myOption.size(); i++)
+			text += myOption.get(i).getClass().getSimpleName() + "(" + myOption.get(i).getPrix()+")";
+		System.out.println(text);
 	}
 
 	public String getMarque() {
 		return this.marque;
 	}
-
-	void addOption(Option newOption) {
-		option.add(newOption);
-	}
 	
-	String getOptions(){
-		String returnText;
-		for (int i = 0; i < options.size(); i++)
-			returnText += option.getPrix(); + (String) option.get(i) +"\n";
-		return returnText;
-	}
 
 	Double getPrix() {
 		return prix;

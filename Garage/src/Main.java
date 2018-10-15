@@ -31,7 +31,7 @@ public class Main {
 			lag1.addOption(new SiegeChauffant());
 			garage.addVoiture(lag1);
 			
-			//lag1.getOptions();
+			lag1.getOption();
 			
 
 			Vehicule A300B_2 = new A300B();

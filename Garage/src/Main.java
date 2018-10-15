@@ -10,6 +10,9 @@ import src.moteur.MoteurDiesel;
 import src.moteur.MoteurElectrique;
 import src.moteur.MoteurEssence;
 import src.moteur.MoteurHybride;
+import src.option.GPS;
+import src.option.Option;
+import src.option.SiegeChauffant;
 
 public class Main {
 	public static void main(String[] args) {
@@ -21,13 +24,15 @@ public class Main {
 		if (f.isFile() && f.canRead() && isLoadOk) {
 			garage = load();
 		} else {
-			//Option gps = new GPS();
-			//System.out.println(gps.getName());
-			
-			
+						
 			Vehicule lag1 = new Lagouna();
-			garage.addVoiture(lag1);
 			lag1.setMoteur(new MoteurEssence("150 Chevaux", 10256d));
+			lag1.addOption(new GPS());
+			lag1.addOption(new SiegeChauffant());
+			garage.addVoiture(lag1);
+			
+			//lag1.getOptions();
+			
 
 			Vehicule A300B_2 = new A300B();
 			A300B_2.setMoteur(new MoteurElectrique("1500 W", 1234d));

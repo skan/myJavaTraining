@@ -1,11 +1,13 @@
 import java.io.Serializable;
 import java.util.List;
-import src.moteur.*;
+
+import src.moteur.Moteur;
+import src.option.Option;
 
 abstract class Vehicule implements Serializable {
 	protected Double prix;
 	protected String nom;
-	protected List<Option> options;
+	protected List<Option> option;
 	protected String marque;
 	protected Moteur moteur;
 
@@ -31,6 +33,10 @@ abstract class Vehicule implements Serializable {
 		return this.marque;
 	}
 
+	void addOption(Option newOption) {
+		option.add(newOption);
+	}
+	
 	String getOptions(){
 		String returnText;
 		for (int i = 0; i < options.size(); i++)

@@ -6,8 +6,8 @@ public enum TypeMoteur {
 
 	private String nom = "";
 	
-	TypeMoteur(String nom) {
-		this.nom = nom;
+	TypeMoteur(String pNom) {
+		this.nom = pNom;
 	}
 	
 	public String getNom()

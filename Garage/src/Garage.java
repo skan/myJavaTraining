@@ -4,7 +4,7 @@ import Vehicules.Vehicule;
 
 public class Garage implements Serializable {
 
-	ArrayList<Vehicule> al_content = new ArrayList<Vehicule>();
+	private ArrayList<Vehicule> al_content = new ArrayList<Vehicule>();
 
 	Garage() {
 

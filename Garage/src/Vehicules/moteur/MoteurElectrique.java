@@ -1,4 +1,4 @@
-package src.moteur;
+package Vehicules.moteur;
 
 public class MoteurElectrique extends Moteur {
 

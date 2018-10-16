@@ -4,8 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import src.moteur.Moteur;
-import src.option.Option;
+import Vehicules.moteur.Moteur;
+import Vehicules.option.Option;
 
 public abstract class Vehicule implements Serializable {
 	protected Double prix;

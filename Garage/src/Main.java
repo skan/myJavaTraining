@@ -7,18 +7,18 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 import Vehicules.Vehicule;
-import Vehicules.A300B;
-import Vehicules.D4;
-import Vehicules.Lagouna;
-import src.moteur.MoteurDiesel;
-import src.moteur.MoteurElectrique;
-import src.moteur.MoteurEssence;
-import src.moteur.MoteurHybride;
-import src.option.BarreDeToit;
-import src.option.Climatisation;
-import src.option.GPS;
-import src.option.SiegeChauffant;
-import src.option.VitreElectrique;
+import Vehicules.modele.A300B;
+import Vehicules.modele.D4;
+import Vehicules.modele.Lagouna;
+import Vehicules.moteur.MoteurDiesel;
+import Vehicules.moteur.MoteurElectrique;
+import Vehicules.moteur.MoteurEssence;
+import Vehicules.moteur.MoteurHybride;
+import Vehicules.option.BarreDeToit;
+import Vehicules.option.Climatisation;
+import Vehicules.option.GPS;
+import Vehicules.option.SiegeChauffant;
+import Vehicules.option.VitreElectrique;
 
 public class Main {
 	public static void main(String[] args) {
@@ -85,7 +85,7 @@ public class Main {
 			objectOut.writeObject(garage);
 			objectOut.close();
 			fileOut.close();
-			System.out.println("The Garage is succesfully saved");
+			//System.out.println("The Garage is succesfully saved");
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}

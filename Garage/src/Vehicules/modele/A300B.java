@@ -1,4 +1,6 @@
-package Vehicules;
+package Vehicules.modele;
+
+import Vehicules.Vehicule;
 
 public class A300B extends Vehicule {
 

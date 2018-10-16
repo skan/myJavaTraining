@@ -1,6 +1,4 @@
-package src.option;
-
-import java.io.Serializable;
+package Vehicules.option;
 
 public class BarreDeToit implements Option {
 

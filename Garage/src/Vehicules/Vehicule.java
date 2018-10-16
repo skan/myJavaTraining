@@ -1,3 +1,5 @@
+package Vehicules;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -5,7 +7,7 @@ import java.util.List;
 import src.moteur.Moteur;
 import src.option.Option;
 
-abstract class Vehicule implements Serializable {
+public abstract class Vehicule implements Serializable {
 	protected Double prix;
 	protected String nom;
 	protected List<Option> myOption = new ArrayList<Option>();
@@ -17,11 +19,10 @@ abstract class Vehicule implements Serializable {
 		toPrint += this.marque + " : ";
 		toPrint += this.nom;
 		toPrint += this.moteur.toString() + "[";
-		for (int i = 0; i < myOption.size(); i++)
-		{
+		for (int i = 0; i < myOption.size(); i++) {
 			if (i != 0)
 				toPrint += ", ";
-			toPrint += myOption.get(i).getClass().getSimpleName() + " (" + myOption.get(i).getPrix()+"€)";
+			toPrint += myOption.get(i).getClass().getSimpleName() + " (" + myOption.get(i).getPrix() + "€)";
 		}
 		toPrint += "]";
 		toPrint += " d'une valeur totale de " + this.prix + " €";
@@ -32,20 +33,19 @@ abstract class Vehicule implements Serializable {
 		this.moteur = moteur;
 	}
 
-	protected void addOption(Option optionToAdd) {
+	public void addOption(Option optionToAdd) {
 		myOption.add(optionToAdd);
 	}
-	
+
 	public void getOption() {
 		String text = "";
-		
+
 		System.out.println(text);
 	}
 
 	public String getMarque() {
 		return this.marque;
 	}
-	
 
 	Double getPrix() {
 		return prix;

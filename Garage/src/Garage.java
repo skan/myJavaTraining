@@ -1,5 +1,6 @@
 import java.io.Serializable;
 import java.util.ArrayList;
+import Vehicules.Vehicule;
 
 public class Garage implements Serializable {
 
@@ -11,11 +12,11 @@ public class Garage implements Serializable {
 
 	@Override
 	public String toString() {
-		String returnText ="************************\n";
-		returnText +="* Garage Open Classroom \n";
-		returnText +="************************\n";
+		String returnText = "************************\n";
+		returnText += "* Garage Open Classroom \n";
+		returnText += "************************\n";
 		for (int i = 0; i < al_content.size(); i++)
-			returnText += al_content.get(i).toString() +"\n";
+			returnText += al_content.get(i).toString() + "\n";
 		return returnText;
 	}
 

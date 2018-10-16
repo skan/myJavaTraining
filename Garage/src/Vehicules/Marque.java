@@ -1,3 +1,4 @@
+package Vehicules;
 
 public enum Marque {
 	RENO("RENO","Lagouna"), PIGEOT("PIGEOT","A330B"), TROEN("TROEN","D4");

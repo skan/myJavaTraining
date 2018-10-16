@@ -6,6 +6,10 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+import Vehicules.Vehicule;
+import Vehicules.A300B;
+import Vehicules.D4;
+import Vehicules.Lagouna;
 import src.moteur.MoteurDiesel;
 import src.moteur.MoteurElectrique;
 import src.moteur.MoteurEssence;
@@ -21,7 +25,7 @@ public class Main {
 		Garage garage = new Garage();
 
 		File f = new File("garage.txt");
-		boolean isLoadOk = true;
+		boolean isLoadOk = false;
 
 		if (f.isFile() && f.canRead() && isLoadOk) {
 			garage = load();

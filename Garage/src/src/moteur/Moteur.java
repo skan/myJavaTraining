@@ -13,8 +13,7 @@ public abstract class Moteur implements Serializable{
 	}
 
 	public String toString() {
-		String toPrint = Moteur.getNom() + " " + Cylindre + " (" + Prix +"€)";
-		return toPrint;
+		return Moteur.getNom() + " " + Cylindre + " (" + Prix +"€)";
 	}
 	
 	Double getPrix() {

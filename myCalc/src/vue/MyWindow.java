@@ -2,16 +2,17 @@ package vue;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import model.Calc;
-import observer.Observateur;
-
 public class MyWindow extends JFrame {
+	private int result = 0;
+	
 	private JLabel label_result = new JLabel("myLabel");
 
 	private JButton button_1 = new JButton("1");
@@ -36,11 +37,11 @@ public class MyWindow extends JFrame {
 	private JPanel panel_result = new JPanel();
 	private JPanel panel_numbers = new JPanel();
 	private JPanel panel_ops = new JPanel();
-
-	private Calc calc = new Calc();
+	
+	private int actualNumber;
+	private int previousNumber;
 
 	public MyWindow() {
-		// setup JFrame
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
@@ -61,6 +62,8 @@ public class MyWindow extends JFrame {
 		panel_numbers.add(button_dot);
 		panel_numbers.add(button_equal);
 
+		
+
 		// Ops Panel
 		panel_ops.setLayout(new GridLayout(5, 1));
 		panel_ops.add(button_clear);
@@ -73,24 +76,42 @@ public class MyWindow extends JFrame {
 		panel_result.add(label_result);
 		label_result.setText("calc results will be here");
 
+		// add panels to frame
 		this.getContentPane().add(this.panel_numbers, BorderLayout.CENTER);
 		this.getContentPane().add(this.panel_ops, BorderLayout.EAST);
 		this.getContentPane().add(this.panel_result, BorderLayout.NORTH);
 
-		this.calc.addObservateur(new Observateur() {
-
-			@Override
-			public void update(String result) {
-				label_result.setText(result);
-			}
-		});
-
+		// boutons actions
+		button_1.addActionListener(new Bouton_1_Listener());
+		button_add.addActionListener(new Bouton_add_Listener());
+		button_equal.addActionListener(new Bouton_equal_Listener());
+		
+		
 		this.setVisible(true);
 	}
 
 	// Main method
 	public static void main(String[] args) {
 		MyWindow fen = new MyWindow();
-		// fen.setVisible(true);
+		fen.setVisible(true);
+	}
+
+	class Bouton_1_Listener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			actualNumber = actualNumber*10 + 1;
+			label_result.setText(Integer.toString(actualNumber));
+		}
+	}
+	class Bouton_add_Listener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			previousNumber = actualNumber;
+			actualNumber = 0;
+			label_result.setText("+");
+		}
+	}
+	class Bouton_equal_Listener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			label_result.setText(Integer.toString(previousNumber+actualNumber));
+		}
 	}
 }

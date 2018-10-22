@@ -1,4 +1,4 @@
-package com.sdz.observer;
+package observer;
 
 public interface Observable {
 

@@ -1,5 +1,5 @@
-package com.sdz.observer;
+package observer;
 
 public interface Observateur {
-	public void update(String hour);
+	public void update(int result);
 }

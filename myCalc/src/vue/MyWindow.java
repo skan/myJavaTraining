@@ -66,8 +66,13 @@ public class MyWindow extends JFrame {
 		panel_ops.add(button_mult);
 		panel_ops.add(button_div);
 		
+		// result panel
+		panel_result.add(label_result);
+		label_result.setText("calc results will be here");
+		
 		this.getContentPane().add(this.panel_numbers, BorderLayout.CENTER);
 		this.getContentPane().add(this.panel_ops, BorderLayout.EAST);
+		this.getContentPane().add(this.panel_result, BorderLayout.NORTH);
 		
 		
 		this.setVisible(true);

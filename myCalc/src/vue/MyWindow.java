@@ -24,7 +24,7 @@ public class MyWindow extends JFrame {
 	private JButton button_8 = new JButton("8");
 	private JButton button_9 = new JButton("9");
 	private JButton button_0 = new JButton("0");
-	private JButton button_equal = new JButton("equal");
+	private JButton button_equal = new JButton("=");
 	private JButton button_dot = new JButton(".");
 
 	private JButton button_clear = new JButton("C");
@@ -48,8 +48,170 @@ public class MyWindow extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
-		this.setSize(400, 400);
+		this.setSize(240, 260);
+		this.setTitle("myCalc");
 
+		initComponents();
+
+		this.setVisible(true);
+	}
+
+	// Main method
+	public static void main(String[] args) {
+		MyWindow fen = new MyWindow();
+		fen.setVisible(true);
+	}
+
+	class Bouton_1_Listener implements ActionListener {
+
+		public void actionPerformed(ActionEvent e) {
+			digitCompute("1");
+		}
+	}
+
+	class Bouton_2_Listener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			digitCompute("2");
+		}
+	}
+
+	class Bouton_3_Listener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			digitCompute("3");
+		}
+	}
+
+	class Bouton_4_Listener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			digitCompute("4");
+		}
+	}
+
+	class Bouton_5_Listener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			digitCompute("5");
+		}
+	}
+
+	class Bouton_6_Listener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			digitCompute("6");
+		}
+	}
+
+	class Bouton_7_Listener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			digitCompute("7");
+		}
+	}
+
+	class Bouton_8_Listener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			digitCompute("8");
+		}
+	}
+
+	class Bouton_9_Listener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			digitCompute("9");
+		}
+	}
+
+	class Bouton_0_Listener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			digitCompute("0");
+		}
+	}
+
+	class Bouton_dot_Listener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			if (isOpsSelected == false) {
+				digitCompute("0.");
+			} else {
+				digitCompute(".");
+			}
+		}
+	}
+
+	class Bouton_add_Listener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			opsActions("+");
+		}
+	}
+
+	class Bouton_minus_Listener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			opsActions("-");
+		}
+	}
+
+	class Bouton_mult_Listener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			opsActions("*");
+		}
+	}
+
+	class Bouton_div_Listener implements ActionListener {
+
+		public void actionPerformed(ActionEvent e) {
+			opsActions("/");
+		}
+	}
+
+	class Bouton_equal_Listener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			// compute result versus operation
+			if (operation == "+") {
+				result = Double.parseDouble(previousNumber) + Double.parseDouble(actualNumber);
+			} else if (operation == "-") {
+				result = Double.parseDouble(previousNumber) - Double.parseDouble(actualNumber);
+			} else if (operation == "*") {
+				result = Double.parseDouble(previousNumber) * Double.parseDouble(actualNumber);
+			} else if (operation == "/") {
+				result = Double.parseDouble(previousNumber) / Double.parseDouble(actualNumber);
+			}
+			display(String.valueOf(result));
+			// reset stored numbers
+			actualNumber = Double.toString(result);
+			isOpsSelected = false;
+		}
+	}
+
+	class Bouton_clear_Listener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			actualNumber = "";
+			previousNumber = "";
+			label_result.setText("0");
+		}
+	}
+
+	private void display(String val) {
+		label_result.setText(val);
+	}
+
+	private void digitCompute(String str) {
+		if (!isOpsSelected) {
+			actualNumber = "";
+			isOpsSelected = true;
+		}
+		actualNumber += str;
+		try {
+			display(actualNumber);
+		} catch (Exception e) {
+			display(".");
+		}
+
+	}
+
+	private void opsActions(String str) {
+		previousNumber = actualNumber;
+		actualNumber = "";
+		label_result.setText(str);
+		operation = str;
+		isOpsSelected = true;
+	}
+
+	private void initComponents() {
 		// Numbers Panel
 		panel_numbers.setLayout(new GridLayout(4, 3));
 		panel_numbers.add(button_1);
@@ -94,170 +256,12 @@ public class MyWindow extends JFrame {
 		button_9.addActionListener(new Bouton_9_Listener());
 		button_0.addActionListener(new Bouton_0_Listener());
 		button_dot.addActionListener(new Bouton_dot_Listener());
-		
+
 		button_add.addActionListener(new Bouton_add_Listener());
 		button_minus.addActionListener(new Bouton_minus_Listener());
 		button_equal.addActionListener(new Bouton_equal_Listener());
 		button_mult.addActionListener(new Bouton_mult_Listener());
 		button_div.addActionListener(new Bouton_div_Listener());
 		button_clear.addActionListener(new Bouton_clear_Listener());
-
-		this.setVisible(true);
-	}
-
-	// Main method
-	public static void main(String[] args) {
-		MyWindow fen = new MyWindow();
-		fen.setVisible(true);
-	}
-
-	class Bouton_1_Listener implements ActionListener {
-
-		public void actionPerformed(ActionEvent e) {
-			digitCompute("1");
-		}
-	}
-
-	class Bouton_2_Listener implements ActionListener {
-		public void actionPerformed(ActionEvent e) {
-			digitCompute("2");
-		}
-	}
-
-	class Bouton_3_Listener implements ActionListener { 
-		public void actionPerformed(ActionEvent e) { 
-			digitCompute("3");
-		}
-	}
-
-	class Bouton_4_Listener implements ActionListener { 
-		public void actionPerformed(ActionEvent e) {
-			digitCompute("4");
-		}
-	}
-
-	class Bouton_5_Listener implements ActionListener { 
-		public void actionPerformed(ActionEvent e) { 
-			digitCompute("5");
-		}
-	}
-
-	class Bouton_6_Listener implements ActionListener { 
-		public void actionPerformed(ActionEvent e) { 
-			digitCompute("6");
-		}
-	}
-
-	class Bouton_7_Listener implements ActionListener { 
-		public void actionPerformed(ActionEvent e) { 
-			digitCompute("7");
-		}
-	}
-
-	class Bouton_8_Listener implements ActionListener { 
-		public void actionPerformed(ActionEvent e) { 
-			digitCompute("8");
-		}
-	}
-
-	class Bouton_9_Listener implements ActionListener { 
-		public void actionPerformed(ActionEvent e) { 
-			digitCompute("9");
-		}
-	}
-
-	class Bouton_0_Listener implements ActionListener { 
-		public void actionPerformed(ActionEvent e) { 
-			digitCompute("0");
-		}
-	}
-	class Bouton_dot_Listener implements ActionListener { 
-		public void actionPerformed(ActionEvent e) {
-			if (isOpsSelected == false)
-			{
-				digitCompute("0.");
-			}
-			else {
-				digitCompute(".");
-			}
-		}
-	}
-	
-	class Bouton_add_Listener implements ActionListener {
-		public void actionPerformed(ActionEvent e) {
-			opsActions("+");
-		}
-	}
-
-	class Bouton_minus_Listener implements ActionListener {
-		public void actionPerformed(ActionEvent e) {
-			opsActions("-");
-		}
-	}
-
-	class Bouton_mult_Listener implements ActionListener {
-		public void actionPerformed(ActionEvent e) {
-			opsActions("*");
-		}
-	}
-
-	class Bouton_div_Listener implements ActionListener {
-
-		public void actionPerformed(ActionEvent e) { 
-			opsActions("/");
-		}
-	}
-
-	class Bouton_equal_Listener implements ActionListener { 
-		public void actionPerformed(ActionEvent e) { 
-			// compute result versus operation
-			if (operation == "+") {
-				result = Double.parseDouble(previousNumber) + Double.parseDouble(actualNumber);
-			} else if (operation == "-") {
-				result = Double.parseDouble(previousNumber) - Double.parseDouble(actualNumber);
-			} else if (operation == "*") {
-				result = Double.parseDouble(previousNumber) * Double.parseDouble(actualNumber);
-			} else if (operation == "/") {
-				result = Double.parseDouble(previousNumber) / Double.parseDouble(actualNumber);
-			}
-			display(String.valueOf(result));
-			// reset stored numbers
-			actualNumber = Double.toString(result);
-			isOpsSelected = false;
-		}
-	}
-
-	class Bouton_clear_Listener implements ActionListener { 
-		public void actionPerformed(ActionEvent e) { 
-			actualNumber = "";
-			previousNumber = "";
-			label_result.setText("0");
-		}
-	}
-
-	private void display(String val) {
-		label_result.setText(val);
-	}
-
-	private void digitCompute(String str) { 
-		if (!isOpsSelected) {
-			actualNumber = "";
-			isOpsSelected = true;
-		}
-		actualNumber += str;
-		try {
-			display(actualNumber);	
-		} catch (Exception e) {
-			display(".");
-		}
-		
-	}
-	private void opsActions(String str){
-		previousNumber = actualNumber;
-		actualNumber = "";
-		label_result.setText(str);
-		operation = str;
-		isOpsSelected = true;
 	}
 }
-

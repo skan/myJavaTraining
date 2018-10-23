@@ -37,8 +37,8 @@ public class MyWindow extends JFrame {
 	private JPanel panel_numbers = new JPanel();
 	private JPanel panel_ops = new JPanel();
 
-	private double actualNumber;
-	private double previousNumber;
+	private String actualNumber;
+	private String previousNumber;
 	private double result = 0;
 	private String operation = "";
 	private boolean isOpsSelected = false;
@@ -93,6 +93,8 @@ public class MyWindow extends JFrame {
 		button_8.addActionListener(new Bouton_8_Listener());
 		button_9.addActionListener(new Bouton_9_Listener());
 		button_0.addActionListener(new Bouton_0_Listener());
+		button_dot.addActionListener(new Bouton_dot_Listener());
+		
 		button_add.addActionListener(new Bouton_add_Listener());
 		button_minus.addActionListener(new Bouton_minus_Listener());
 		button_equal.addActionListener(new Bouton_equal_Listener());
@@ -112,64 +114,69 @@ public class MyWindow extends JFrame {
 	class Bouton_1_Listener implements ActionListener {
 
 		public void actionPerformed(ActionEvent e) {
-			digitCompute(1);
+			digitCompute("1");
 		}
 	}
 
 	class Bouton_2_Listener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			digitCompute(2);
+			digitCompute("2");
 		}
 	}
 
-	class Bouton_3_Listener implements ActionListener {
+	class Bouton_3_Listener implements ActionListener { 
+		public void actionPerformed(ActionEvent e) { 
+			digitCompute("3");
+		}
+	}
+
+	class Bouton_4_Listener implements ActionListener { 
 		public void actionPerformed(ActionEvent e) {
-			digitCompute(3);
+			digitCompute("4");
 		}
 	}
 
-	class Bouton_4_Listener implements ActionListener {
-		public void actionPerformed(ActionEvent e) {
-			digitCompute(4);
+	class Bouton_5_Listener implements ActionListener { 
+		public void actionPerformed(ActionEvent e) { 
+			digitCompute("5");
 		}
 	}
 
-	class Bouton_5_Listener implements ActionListener {
-		public void actionPerformed(ActionEvent e) {
-			digitCompute(5);
+	class Bouton_6_Listener implements ActionListener { 
+		public void actionPerformed(ActionEvent e) { 
+			digitCompute("6");
 		}
 	}
 
-	class Bouton_6_Listener implements ActionListener {
-		public void actionPerformed(ActionEvent e) {
-			digitCompute(6);
+	class Bouton_7_Listener implements ActionListener { 
+		public void actionPerformed(ActionEvent e) { 
+			digitCompute("7");
 		}
 	}
 
-	class Bouton_7_Listener implements ActionListener {
-		public void actionPerformed(ActionEvent e) {
-			digitCompute(7);
+	class Bouton_8_Listener implements ActionListener { 
+		public void actionPerformed(ActionEvent e) { 
+			digitCompute("8");
 		}
 	}
 
-	class Bouton_8_Listener implements ActionListener {
-		public void actionPerformed(ActionEvent e) {
-			digitCompute(8);
+	class Bouton_9_Listener implements ActionListener { 
+		public void actionPerformed(ActionEvent e) { 
+			digitCompute("9");
 		}
 	}
 
-	class Bouton_9_Listener implements ActionListener {
-		public void actionPerformed(ActionEvent e) {
-			digitCompute(9);
+	class Bouton_0_Listener implements ActionListener { 
+		public void actionPerformed(ActionEvent e) { 
+			digitCompute("0");
 		}
 	}
-
-	class Bouton_0_Listener implements ActionListener {
-		public void actionPerformed(ActionEvent e) {
-			digitCompute(0);
+	class Bouton_dot_Listener implements ActionListener { 
+		public void actionPerformed(ActionEvent e) { 
+			digitCompute(".");
 		}
 	}
-
+	
 	class Bouton_add_Listener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			opsActions("+");
@@ -195,29 +202,29 @@ public class MyWindow extends JFrame {
 		}
 	}
 
-	class Bouton_equal_Listener implements ActionListener {
-		public void actionPerformed(ActionEvent e) {
+	class Bouton_equal_Listener implements ActionListener { 
+		public void actionPerformed(ActionEvent e) { 
 			// compute result versus operation
 			if (operation == "+") {
-				result = previousNumber + actualNumber;
+				result = Double.parseDouble(previousNumber) + Double.parseDouble(actualNumber);
 			} else if (operation == "-") {
-				result = previousNumber - actualNumber;
+				result = Double.parseDouble(previousNumber) - Double.parseDouble(actualNumber);
 			} else if (operation == "*") {
-				result = previousNumber * actualNumber;
+				result = Double.parseDouble(previousNumber) * Double.parseDouble(actualNumber);
 			} else if (operation == "/") {
-				result = previousNumber / actualNumber;
+				result = Double.parseDouble(previousNumber) / Double.parseDouble(actualNumber);
 			}
 			display(result);
 			// reset stored numbers
-			actualNumber = result;
+			actualNumber = Double.toString(result);
 			isOpsSelected = false;
 		}
 	}
 
-	class Bouton_clear_Listener implements ActionListener {
-		public void actionPerformed(ActionEvent e) {
-			actualNumber = 0;
-			previousNumber = 0;
+	class Bouton_clear_Listener implements ActionListener { 
+		public void actionPerformed(ActionEvent e) { 
+			actualNumber = "";
+			previousNumber = "";
 			label_result.setText("0");
 		}
 	}
@@ -226,17 +233,17 @@ public class MyWindow extends JFrame {
 		label_result.setText(Double.toString(val));
 	}
 
-	private void digitCompute(int val) {
+	private void digitCompute(String str) { 
 		if (!isOpsSelected) {
-			actualNumber = 0;
+			actualNumber = "";
 			isOpsSelected = true;
 		}
-		actualNumber = actualNumber * 10 + val;
-		display(actualNumber);
+		actualNumber += str;
+		display(Double.parseDouble(actualNumber));
 	}
 	private void opsActions(String str){
 		previousNumber = actualNumber;
-		actualNumber = 0;
+		actualNumber = "";
 		label_result.setText(str);
 		operation = str;
 		isOpsSelected = true;

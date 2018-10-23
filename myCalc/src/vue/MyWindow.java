@@ -81,31 +81,13 @@ public class MyWindow extends JFrame {
 		}
 	}
 
-	class Bouton_add_Listener implements ActionListener {
+	class OpsListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			opsActions("+");
+			String str = ((JButton) e.getSource()).getText();
+			opsActions(str);
 		}
 	}
-
-	class Bouton_minus_Listener implements ActionListener {
-		public void actionPerformed(ActionEvent e) {
-			opsActions("-");
-		}
-	}
-
-	class Bouton_mult_Listener implements ActionListener {
-		public void actionPerformed(ActionEvent e) {
-			opsActions("*");
-		}
-	}
-
-	class Bouton_div_Listener implements ActionListener {
-
-		public void actionPerformed(ActionEvent e) {
-			opsActions("/");
-		}
-	}
-
+	
 	class Bouton_equal_Listener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			// compute result versus operation
@@ -207,11 +189,11 @@ public class MyWindow extends JFrame {
 		button_0.addActionListener(new DigitListener());
 		button_dot.addActionListener(new Bouton_dot_Listener());
 
-		button_add.addActionListener(new Bouton_add_Listener());
-		button_minus.addActionListener(new Bouton_minus_Listener());
+		button_add.addActionListener(new OpsListener());
+		button_minus.addActionListener(new OpsListener());
 		button_equal.addActionListener(new Bouton_equal_Listener());
-		button_mult.addActionListener(new Bouton_mult_Listener());
-		button_div.addActionListener(new Bouton_div_Listener());
+		button_mult.addActionListener(new OpsListener());
+		button_div.addActionListener(new OpsListener());
 		button_clear.addActionListener(new Bouton_clear_Listener());
 	}
 	private static String fmt_double(double d)

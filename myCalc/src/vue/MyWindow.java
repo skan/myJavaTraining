@@ -94,6 +94,9 @@ public class MyWindow extends JFrame {
 		button_add.addActionListener(new Bouton_add_Listener());
 		button_minus.addActionListener(new Bouton_minus_Listener());
 		button_equal.addActionListener(new Bouton_equal_Listener());
+		button_mult.addActionListener(new Bouton_mult_Listener());
+		button_div.addActionListener(new Bouton_div_Listener());
+		
 		
 		button_clear.addActionListener(new Bouton_clear_Listener());
 
@@ -186,6 +189,24 @@ public class MyWindow extends JFrame {
 			operation = "-";
 		}
 	}
+	
+	class Bouton_mult_Listener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			previousNumber = actualNumber;
+			actualNumber = 0;
+			label_result.setText("*");
+			operation = "*";
+		}
+	}
+	
+	class Bouton_div_Listener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			previousNumber = actualNumber;
+			actualNumber = 0;
+			label_result.setText("/");
+			operation = "/";
+		}
+	}
 
 	class Bouton_equal_Listener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
@@ -195,6 +216,12 @@ public class MyWindow extends JFrame {
 			}
 			else if (operation == "-") {
 				label_result.setText(Integer.toString(previousNumber - actualNumber));
+			}
+			else if (operation == "*") {
+				label_result.setText(Integer.toString(previousNumber * actualNumber));
+			}
+			else if (operation == "/") {
+				label_result.setText(Integer.toString(previousNumber / actualNumber));
 			}
 			// reset stored numbers
 			actualNumber = 0;

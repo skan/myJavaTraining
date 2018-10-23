@@ -42,6 +42,7 @@ public class MyWindow extends JFrame {
 	private double result = 0;
 	private String operation = "";
 
+	// Constructor
 	public MyWindow() {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
@@ -96,8 +97,6 @@ public class MyWindow extends JFrame {
 		button_equal.addActionListener(new Bouton_equal_Listener());
 		button_mult.addActionListener(new Bouton_mult_Listener());
 		button_div.addActionListener(new Bouton_div_Listener());
-		
-		
 		button_clear.addActionListener(new Bouton_clear_Listener());
 
 		this.setVisible(true);
@@ -114,15 +113,13 @@ public class MyWindow extends JFrame {
 			actualNumber = actualNumber * 10 + 1;
 			display(actualNumber);
 		}
-	}
-	
+	}	
 	class Bouton_2_Listener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			actualNumber = actualNumber * 10 + 2;
 			display(actualNumber);
 		}
-	}
-	
+	}	
 	class Bouton_3_Listener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			actualNumber = actualNumber * 10 + 3;
@@ -171,7 +168,6 @@ public class MyWindow extends JFrame {
 			display(actualNumber);
 		}
 	}
-
 	class Bouton_add_Listener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			previousNumber = actualNumber;
@@ -180,7 +176,6 @@ public class MyWindow extends JFrame {
 			operation = "+";
 		}
 	}
-	
 	class Bouton_minus_Listener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			previousNumber = actualNumber;
@@ -189,7 +184,6 @@ public class MyWindow extends JFrame {
 			operation = "-";
 		}
 	}
-	
 	class Bouton_mult_Listener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			previousNumber = actualNumber;
@@ -198,16 +192,16 @@ public class MyWindow extends JFrame {
 			operation = "*";
 		}
 	}
-	
 	class Bouton_div_Listener implements ActionListener {
+
 		public void actionPerformed(ActionEvent e) {
+
 			previousNumber = actualNumber;
 			actualNumber = 0;
 			label_result.setText("/");
 			operation = "/";
 		}
 	}
-
 	class Bouton_equal_Listener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			// compute result verus operation
@@ -225,11 +219,9 @@ public class MyWindow extends JFrame {
 			}
 			display(result);
 			// reset stored numbers
-			actualNumber = 0;
-			previousNumber = 0;
+			actualNumber = result;
 		}
 	}
-
 	class Bouton_clear_Listener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			actualNumber = 0;

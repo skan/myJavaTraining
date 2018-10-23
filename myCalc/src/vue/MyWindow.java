@@ -172,8 +172,14 @@ public class MyWindow extends JFrame {
 		}
 	}
 	class Bouton_dot_Listener implements ActionListener { 
-		public void actionPerformed(ActionEvent e) { 
-			digitCompute(".");
+		public void actionPerformed(ActionEvent e) {
+			if (isOpsSelected == false)
+			{
+				digitCompute("0.");
+			}
+			else {
+				digitCompute(".");
+			}
 		}
 	}
 	
@@ -214,7 +220,7 @@ public class MyWindow extends JFrame {
 			} else if (operation == "/") {
 				result = Double.parseDouble(previousNumber) / Double.parseDouble(actualNumber);
 			}
-			display(result);
+			display(String.valueOf(result));
 			// reset stored numbers
 			actualNumber = Double.toString(result);
 			isOpsSelected = false;
@@ -229,8 +235,8 @@ public class MyWindow extends JFrame {
 		}
 	}
 
-	private void display(double val) {
-		label_result.setText(Double.toString(val));
+	private void display(String val) {
+		label_result.setText(val);
 	}
 
 	private void digitCompute(String str) { 
@@ -239,7 +245,12 @@ public class MyWindow extends JFrame {
 			isOpsSelected = true;
 		}
 		actualNumber += str;
-		display(Double.parseDouble(actualNumber));
+		try {
+			display(actualNumber);	
+		} catch (Exception e) {
+			display(".");
+		}
+		
 	}
 	private void opsActions(String str){
 		previousNumber = actualNumber;

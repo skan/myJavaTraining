@@ -37,9 +37,9 @@ public class MyWindow extends JFrame {
 	private JPanel panel_numbers = new JPanel();
 	private JPanel panel_ops = new JPanel();
 
-	private int actualNumber;
-	private int previousNumber;
-	private int result = 0;
+	private double actualNumber;
+	private double previousNumber;
+	private double result = 0;
 	private String operation = "";
 
 	public MyWindow() {
@@ -112,63 +112,63 @@ public class MyWindow extends JFrame {
 	class Bouton_1_Listener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			actualNumber = actualNumber * 10 + 1;
-			label_result.setText(Integer.toString(actualNumber));
+			display(actualNumber);
 		}
 	}
 	
 	class Bouton_2_Listener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			actualNumber = actualNumber * 10 + 2;
-			label_result.setText(Integer.toString(actualNumber));
+			display(actualNumber);
 		}
 	}
 	
 	class Bouton_3_Listener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			actualNumber = actualNumber * 10 + 3;
-			label_result.setText(Integer.toString(actualNumber));
+			display(actualNumber);
 		}
 	}
 	class Bouton_4_Listener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			actualNumber = actualNumber * 10 + 4;
-			label_result.setText(Integer.toString(actualNumber));
+			display(actualNumber);
 		}
 	}
 	class Bouton_5_Listener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			actualNumber = actualNumber * 10 + 5;
-			label_result.setText(Integer.toString(actualNumber));
+			display(actualNumber);
 		}
 	}
 	class Bouton_6_Listener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			actualNumber = actualNumber * 10 + 6;
-			label_result.setText(Integer.toString(actualNumber));
+			display(actualNumber);
 		}
 	}
 	class Bouton_7_Listener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			actualNumber = actualNumber * 10 + 7;
-			label_result.setText(Integer.toString(actualNumber));
+			display(actualNumber);
 		}
 	}
 	class Bouton_8_Listener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			actualNumber = actualNumber * 10 + 8;
-			label_result.setText(Integer.toString(actualNumber));
+			display(actualNumber);
 		}
 	}
 	class Bouton_9_Listener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			actualNumber = actualNumber * 10 + 9;
-			label_result.setText(Integer.toString(actualNumber));
+			display(actualNumber);
 		}
 	}
 	class Bouton_0_Listener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			actualNumber = actualNumber * 10 + 0;
-			label_result.setText(Integer.toString(actualNumber));
+			display(actualNumber);
 		}
 	}
 
@@ -212,17 +212,18 @@ public class MyWindow extends JFrame {
 		public void actionPerformed(ActionEvent e) {
 			// compute result verus operation
 			if (operation == "+") {
-				label_result.setText(Integer.toString(previousNumber + actualNumber));
+				result = previousNumber + actualNumber;
 			}
 			else if (operation == "-") {
-				label_result.setText(Integer.toString(previousNumber - actualNumber));
+				result = previousNumber - actualNumber;
 			}
 			else if (operation == "*") {
-				label_result.setText(Integer.toString(previousNumber * actualNumber));
+				result = previousNumber * actualNumber;
 			}
 			else if (operation == "/") {
-				label_result.setText(Integer.toString(previousNumber / actualNumber));
+				result = previousNumber / actualNumber;
 			}
+			display(result);
 			// reset stored numbers
 			actualNumber = 0;
 			previousNumber = 0;
@@ -235,5 +236,9 @@ public class MyWindow extends JFrame {
 			previousNumber = 0;
 			label_result.setText("0");
 		}
+	}
+	private void display (double val)
+	{
+		label_result.setText(Double.toString(val));
 	}
 }

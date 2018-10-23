@@ -172,7 +172,7 @@ public class MyWindow extends JFrame {
 			} else if (operation == "/") {
 				result = Double.parseDouble(previousNumber) / Double.parseDouble(actualNumber);
 			}
-			display(String.valueOf(result));
+			display(fmt_double(result));
 			// reset stored numbers
 			actualNumber = Double.toString(result);
 			isOpsSelected = false;
@@ -267,5 +267,12 @@ public class MyWindow extends JFrame {
 		button_mult.addActionListener(new Bouton_mult_Listener());
 		button_div.addActionListener(new Bouton_div_Listener());
 		button_clear.addActionListener(new Bouton_clear_Listener());
+	}
+	private static String fmt_double(double d)
+	{
+	    if(d == (long) d)
+	        return String.format("%d",(long)d);
+	    else
+	        return String.format("%s",d);
 	}
 }

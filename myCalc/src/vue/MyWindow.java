@@ -1,10 +1,12 @@
 package vue;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -161,7 +163,7 @@ public class MyWindow extends JFrame {
 	class Bouton_equal_Listener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			// compute result versus operation
-			if (operation == "+") {
+			if (operation.equals("+")) {
 				result = Double.parseDouble(previousNumber) + Double.parseDouble(actualNumber);
 			} else if (operation == "-") {
 				result = Double.parseDouble(previousNumber) - Double.parseDouble(actualNumber);
@@ -237,6 +239,8 @@ public class MyWindow extends JFrame {
 
 		// result panel
 		panel_result.add(label_result);
+		panel_result.setBorder(BorderFactory.createLineBorder(Color.black));
+
 		label_result.setText("calc results will be here");
 
 		// add panels to frame

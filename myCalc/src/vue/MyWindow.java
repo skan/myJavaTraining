@@ -172,42 +172,26 @@ public class MyWindow extends JFrame {
 
 	class Bouton_add_Listener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			previousNumber = actualNumber;
-			actualNumber = 0;
-			label_result.setText("+");
-			operation = "+";
-			isOpsSelected = true;
+			opsActions("+");
 		}
 	}
 
 	class Bouton_minus_Listener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			previousNumber = actualNumber;
-			actualNumber = 0;
-			label_result.setText("-");
-			operation = "-";
-			isOpsSelected = true;
+			opsActions("-");
 		}
 	}
 
 	class Bouton_mult_Listener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			previousNumber = actualNumber;
-			actualNumber = 0;
-			label_result.setText("*");
-			operation = "*";
-			isOpsSelected = true;
+			opsActions("*");
 		}
 	}
 
 	class Bouton_div_Listener implements ActionListener {
 
-		public void actionPerformed(ActionEvent e) {
-			previousNumber = actualNumber;
-			actualNumber = 0;
-			label_result.setText("/");
-			operation = "/";
-			isOpsSelected = true;
+		public void actionPerformed(ActionEvent e) { 
+			opsActions("/");
 		}
 	}
 
@@ -250,4 +234,12 @@ public class MyWindow extends JFrame {
 		actualNumber = actualNumber * 10 + val;
 		display(actualNumber);
 	}
+	private void opsActions(String str){
+		previousNumber = actualNumber;
+		actualNumber = 0;
+		label_result.setText(str);
+		operation = str;
+		isOpsSelected = true;
+	}
 }
+

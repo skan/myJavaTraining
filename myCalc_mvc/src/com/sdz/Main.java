@@ -1,19 +1,21 @@
 package com.sdz;
 
-import com.sdz.controler.*;
-import com.sdz.model.*;
-import com.sdz.vue.Calculette;
+import com.sdz.View.Calculette;
+import com.sdz.controler.AbstractControler;
+import com.sdz.controler.CalculetteControler;
+import com.sdz.model.AbstractModel;
+import com.sdz.model.Calculator;
 
 public class Main {
 
   public static void main(String[] args) {
-    //Instanciation de notre modèle
+    //Model
     AbstractModel calc = new Calculator();
-    //Création du contrôleur
+    //Controler from model
     AbstractControler controler = new CalculetteControler(calc);
-    //Création de notre fenêtre avec le contrôleur en paramètre
+    //view from controller
     Calculette calculette = new Calculette(controler);
-    //Ajout de la fenêtre comme observer de notre modèle
+    //add View to Model observer
     calc.addObserver(calculette);
   }
 }

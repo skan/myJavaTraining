@@ -1,4 +1,4 @@
-package com.sdz.vue;
+package com.sdz.View;
 
 import java.awt.BorderLayout;
 import java.awt.Color;

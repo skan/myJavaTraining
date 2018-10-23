@@ -110,105 +110,66 @@ public class MyWindow extends JFrame {
 	}
 
 	class Bouton_1_Listener implements ActionListener {
-		public void actionPerformed(ActionEvent e) { 
-			if (!isOpsSelected) {
-				actualNumber = 0;
-				isOpsSelected = true;
-			}
-			actualNumber = actualNumber * 10 + 1;
-			display(actualNumber);
-		}
-	}	
-	class Bouton_2_Listener implements ActionListener { 
-		public void actionPerformed(ActionEvent e) { 
-			if (!isOpsSelected) {
-				actualNumber = 0;
-				isOpsSelected = true;
-			}
-			actualNumber = actualNumber * 10 + 2;
-			display(actualNumber);
-		}
-	}	
-	class Bouton_3_Listener implements ActionListener { 
-		public void actionPerformed(ActionEvent e) { 
-			if (!isOpsSelected) {
-				actualNumber = 0;
-				isOpsSelected = true;
-			}
-			actualNumber = actualNumber * 10 + 3;
-			display(actualNumber);
+
+		public void actionPerformed(ActionEvent e) {
+			digitCompute(1);
 		}
 	}
-	class Bouton_4_Listener implements ActionListener { 
-		public void actionPerformed(ActionEvent e) { 
-			if (!isOpsSelected) {
-				actualNumber = 0;
-				isOpsSelected = true;
-			}
-			actualNumber = actualNumber * 10 + 4;
-			display(actualNumber);
+
+	class Bouton_2_Listener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			digitCompute(2);
 		}
 	}
-	class Bouton_5_Listener implements ActionListener { 
-		public void actionPerformed(ActionEvent e) { 
-			if (!isOpsSelected) {
-				actualNumber = 0;
-				isOpsSelected = true;
-			}
-			actualNumber = actualNumber * 10 + 5;
-			display(actualNumber);
+
+	class Bouton_3_Listener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			digitCompute(3);
 		}
 	}
-	class Bouton_6_Listener implements ActionListener { 
-		public void actionPerformed(ActionEvent e) { 
-			if (!isOpsSelected) {
-				actualNumber = 0;
-				isOpsSelected = true;
-			}
-			actualNumber = actualNumber * 10 + 6;
-			display(actualNumber);
+
+	class Bouton_4_Listener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			digitCompute(4);
 		}
 	}
-	class Bouton_7_Listener implements ActionListener { 
-		public void actionPerformed(ActionEvent e) { 
-			if (!isOpsSelected) {
-				actualNumber = 0;
-				isOpsSelected = true;
-			}
-			actualNumber = actualNumber * 10 + 7;
-			display(actualNumber);
+
+	class Bouton_5_Listener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			digitCompute(5);
 		}
 	}
-	class Bouton_8_Listener implements ActionListener { 
-		public void actionPerformed(ActionEvent e) { 
-			if (!isOpsSelected) {
-				actualNumber = 0;
-				isOpsSelected = true;
-			}
-			actualNumber = actualNumber * 10 + 8;
-			display(actualNumber);
+
+	class Bouton_6_Listener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			digitCompute(6);
 		}
 	}
-	class Bouton_9_Listener implements ActionListener { 
-		public void actionPerformed(ActionEvent e) { 
-			if (!isOpsSelected) {
-				actualNumber = 0;
-				isOpsSelected = true;
-			}
-			actualNumber = actualNumber * 10 + 9;
-			display(actualNumber);
+
+	class Bouton_7_Listener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			digitCompute(7);
 		}
 	}
+
+	class Bouton_8_Listener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			digitCompute(8);
+		}
+	}
+
+	class Bouton_9_Listener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			digitCompute(9);
+		}
+	}
+
 	class Bouton_0_Listener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			if (!isOpsSelected) {
-				actualNumber = 0;
-				isOpsSelected = true;
-			}
-			actualNumber = actualNumber * 10 + 0;
-			display(actualNumber);
+			digitCompute(0);
 		}
 	}
+
 	class Bouton_add_Listener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			previousNumber = actualNumber;
@@ -218,8 +179,9 @@ public class MyWindow extends JFrame {
 			isOpsSelected = true;
 		}
 	}
-	class Bouton_minus_Listener implements ActionListener { 
-		public void actionPerformed(ActionEvent e) { 
+
+	class Bouton_minus_Listener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
 			previousNumber = actualNumber;
 			actualNumber = 0;
 			label_result.setText("-");
@@ -227,8 +189,9 @@ public class MyWindow extends JFrame {
 			isOpsSelected = true;
 		}
 	}
-	class Bouton_mult_Listener implements ActionListener { 
-		public void actionPerformed(ActionEvent e) { 
+
+	class Bouton_mult_Listener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
 			previousNumber = actualNumber;
 			actualNumber = 0;
 			label_result.setText("*");
@@ -236,6 +199,7 @@ public class MyWindow extends JFrame {
 			isOpsSelected = true;
 		}
 	}
+
 	class Bouton_div_Listener implements ActionListener {
 
 		public void actionPerformed(ActionEvent e) {
@@ -246,19 +210,17 @@ public class MyWindow extends JFrame {
 			isOpsSelected = true;
 		}
 	}
+
 	class Bouton_equal_Listener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			// compute result versus operation
 			if (operation == "+") {
 				result = previousNumber + actualNumber;
-			}
-			else if (operation == "-") {
+			} else if (operation == "-") {
 				result = previousNumber - actualNumber;
-			}
-			else if (operation == "*") {
+			} else if (operation == "*") {
 				result = previousNumber * actualNumber;
-			}
-			else if (operation == "/") {
+			} else if (operation == "/") {
 				result = previousNumber / actualNumber;
 			}
 			display(result);
@@ -267,6 +229,7 @@ public class MyWindow extends JFrame {
 			isOpsSelected = false;
 		}
 	}
+
 	class Bouton_clear_Listener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			actualNumber = 0;
@@ -274,8 +237,17 @@ public class MyWindow extends JFrame {
 			label_result.setText("0");
 		}
 	}
-	private void display (double val)
-	{
+
+	private void display(double val) {
 		label_result.setText(Double.toString(val));
+	}
+
+	private void digitCompute(int val) {
+		if (!isOpsSelected) {
+			actualNumber = 0;
+			isOpsSelected = true;
+		}
+		actualNumber = actualNumber * 10 + val;
+		display(actualNumber);
 	}
 }

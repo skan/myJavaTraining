@@ -1,59 +1,86 @@
-import java.awt.Button;
-import java.awt.Panel;
-import java.awt.Frame;
-import java.awt.TextField;
-import java.awt.Label;
-import java.awt.event.WindowEvent; //for CloseListener()
-import java.awt.event.WindowAdapter; //for CloseListener()
-import java.lang.Integer; //int from Model is passed as an Integer
-import java.util.Observable; //for update();
+// This is the View
+// Its only job is to display what the user sees
+// It performs no calculations, but instead passes
+// information entered by the user to whomever needs
+// it. 
 
-class View implements java.util.Observer {
+import java.awt.event.ActionListener;
 
-	private TextField myTextField;
-	private Button button;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
-	View() {
-		System.out.println("View()");
+public class View extends JFrame{
 
-		Frame frame = new Frame("simple MVC");
-		frame.add("North", new Label("counter"));
-
-		myTextField = new TextField();
-		frame.add("Center", myTextField);
-
-		Panel panel = new Panel();
-		button = new Button("PressMe");
-		panel.add(button);
-		frame.add("South", panel);
-
-		frame.addWindowListener(new CloseListener());
-		frame.setSize(200, 100);
-		frame.setLocation(100, 100);
-		frame.setVisible(true);
-
-	} 
+	private JTextField firstNumber  = new JTextField(10);
+	private JLabel additionLabel = new JLabel("+");
+	private JTextField secondNumber = new JTextField(10);
+	private JButton calculateButton = new JButton("Calculate");
+	private JTextField calcSolution = new JTextField(10);
 	
-	// Called from the Model
-	public void update(Observable obs, Object obj) {
-		myTextField.setText("" + ((Integer) obj).intValue()); // obj is an Object, need to cast to an Integer
-	} 
-
-	// to initialise TextField
-	public void setValue(int v) {
-		myTextField.setText("" + v);
-	} 
+	View(){
+		
+		// Sets up the view and adds the components
+		
+		JPanel calcPanel = new JPanel();
+		
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setSize(600, 200);
+		
+		calcPanel.add(firstNumber);
+		calcPanel.add(additionLabel);
+		calcPanel.add(secondNumber);
+		calcPanel.add(calculateButton);
+		calcPanel.add(calcSolution);
+		
+		this.add(calcPanel);
+		
+		// End of setting up the components --------
+		
+	}
 	
-	public void addController(Controller controller) {
-		System.out.println("View      : adding controller");
-		button.addActionListener(controller); // need controller before adding it as a listener
-	} 
-
-	public static class CloseListener extends WindowAdapter {
-		public void windowClosing(WindowEvent e) {
-			e.getWindow().setVisible(false);
-			System.exit(0);
-		} 
-	} 
-
-} // View
+	public int getFirstNumber(){
+		
+		return Integer.parseInt(firstNumber.getText());
+		
+	}
+	
+	public int getSecondNumber(){
+		
+		return Integer.parseInt(secondNumber.getText());
+		
+	}
+	
+	public int getCalcSolution(){
+		
+		return Integer.parseInt(calcSolution.getText());
+		
+	}
+	
+	public void setCalcSolution(int solution){
+		
+		calcSolution.setText(Integer.toString(solution));
+		
+	}
+	
+	// If the calculateButton is clicked execute a method
+	// in the Controller named actionPerformed
+	
+	void addCalculateListener(ActionListener listenForCalcButton){
+		
+		calculateButton.addActionListener(listenForCalcButton);
+		
+	}
+	
+	// Open a popup that contains the error message passed
+	
+	void displayErrorMessage(String errorMessage){
+		
+		JOptionPane.showMessageDialog(this, errorMessage);
+		
+	}
+	
+}

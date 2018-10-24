@@ -1,30 +1,56 @@
-class Controller implements java.awt.event.ActionListener {
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-	Model model;
-	View view;
+// The Controller coordinates interactions
+// between the View and Model
 
-	Controller() {
-		System.out.println("Controller()");
-	} 
+public class Controller {
+	
+	private View theView;
+	private Model theModel;
+	
+	public Controller(View theView, Model theModel) {
+		this.theView = theView;
+		this.theModel = theModel;
+		
+		// Tell the View that when ever the calculate button
+		// is clicked to execute the actionPerformed method
+		// in the CalculateListener inner class
+		
+		this.theView.addCalculateListener(new CalculateListener());
+	}
+	
+	class CalculateListener implements ActionListener{
 
-	// invoked when a button is pressed
-	public void actionPerformed(java.awt.event.ActionEvent e) {
-		System.out.println("Controller: acting on Model");
-		model.incrementValue();
-	} 
+		public void actionPerformed(ActionEvent e) {
+			
+			int firstNumber, secondNumber = 0;
+			
+			// Surround interactions with the view with
+			// a try block in case numbers weren't
+			// properly entered
+			
+			try{
+			
+				firstNumber = theView.getFirstNumber();
+				secondNumber = theView.getSecondNumber();
+				
+				theModel.addTwoNumbers(firstNumber, secondNumber);
+				
+				theView.setCalcSolution(theModel.getCalculationValue());
+			
+			}
 
-	public void addModel(Model m) {
-		System.out.println("Controller: adding model");
-		this.model = m;
-	} 
-
-	public void addView(View v) {
-		System.out.println("Controller: adding view");
-		this.view = v;
-	} 
-
-	public void initModel(int x) {
-		model.setValue(x);
-	} 
-
-} 
+			catch(NumberFormatException ex){
+				
+				System.out.println(ex);
+				
+				theView.displayErrorMessage("You Need to Enter 2 Integers");
+				
+			}
+			
+		}
+		
+	}
+	
+}

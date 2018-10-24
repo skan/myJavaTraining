@@ -1,25 +1,24 @@
+// The Model performs all the calculations needed
+// and that is it. It doesn't know the View 
+// exists
 
-public class Model extends java.util.Observable {
+public class Model {
 
-	private int counter; 
-
-	public Model() {
-		System.out.println("Model()");
-	} 
-
-	public void setValue(int value) {
-		this.counter = value;
-		System.out.println("Model init: counter = " + counter);
-		setChanged();
-		notifyObservers(counter);
+	// Holds the value of the sum of the numbers
+	// entered in the view
 	
-	} 
-
-	public void incrementValue() {
-		++counter;
-		System.out.println("Model     : counter = " + counter);
-		setChanged();
-		notifyObservers(counter);
-	} 
-
-} 
+	private int calculationValue;
+	
+	public void addTwoNumbers(int firstNumber, int secondNumber){
+		
+		calculationValue = firstNumber + secondNumber;
+		
+	}
+	
+	public int getCalculationValue(){
+		
+		return calculationValue;
+		
+	}
+	
+}

@@ -1,6 +1,6 @@
 package com.sdz.controler;
 
-import java.util.ArrayList;
+import java.util.ArrayList; 
 import com.sdz.model.AbstractModel;
 
 public abstract class AbstractControler {

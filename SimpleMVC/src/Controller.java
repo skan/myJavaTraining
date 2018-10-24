@@ -17,12 +17,16 @@ public class Controller {
 		// is clicked to execute the actionPerformed method
 		// in the CalculateListener inner class
 		
-		this.theView.addCalculateListener(new CalculateListener());
+		this.theView.addCalculateListener(new listenForDigitButton());
 	}
 	
-	class CalculateListener implements ActionListener{
+	class listenForDigitButton implements ActionListener{
 
 		public void actionPerformed(ActionEvent e) {
+			
+			String str = ((JButton) e.getSource()).getText();
+			theModel.digitCompute(str);
+			
 			
 			int firstNumber, secondNumber = 0;
 			

@@ -36,7 +36,8 @@ public class Controller {
 			String str = ((JButton) e.getSource()).getText();
 			if (str.equals("="))
 			{
-				System.out.println("equal button");
+				theModel.compute();
+				theView.setDisplay(theModel.getResult());
 			}
 			else
 			{

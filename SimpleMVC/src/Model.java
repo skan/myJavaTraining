@@ -18,11 +18,11 @@ public class Model {
 		if (str.equals("=")){
 			compute();
 			this.display = formatResult(this.result);
+			this.previousNumber = display;
+			isOpsSelected = false;
 		}
 		else if (str.equals("C")){
-			this.display = "0";
-			this.actualNumber="";
-			this.previousNumber="";
+			resetCalc();
 		}
 		else {
 			this.ops = str;
@@ -61,5 +61,10 @@ public class Model {
 			else
 				return String.format("%s", d);
 		}
+	}
+	private void resetCalc() {
+		this.display = "0";
+		this.actualNumber="";
+		this.previousNumber="";
 	}
 }

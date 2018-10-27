@@ -16,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import vue.MyWindow.Bouton_equal_Listener;
 import vue.MyWindow.OpsListener;
 
 public class View extends JFrame{
@@ -106,8 +107,9 @@ public class View extends JFrame{
 		button_minus.addActionListener(listenForOpsButton);
 		button_mult.addActionListener(listenForOpsButton);
 		button_div.addActionListener(listenForOpsButton);
+		button_equal.addActionListener(listenForOpsButton);
 	}
-	
+
 	// Open a popup that contains the error message passed
 	
 	void displayErrorMessage(String errorMessage){

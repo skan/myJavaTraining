@@ -4,32 +4,30 @@
 
 public class Model {
 
-	// Holds the value of the sum of the numbers
-	// entered in the view
-
 	private String actualNumber = "";
-	private String previousNumber = "";
+	private String previousNumber = "0";
 	private String ops = "";
 	private double result = 0.0;
-	private String display = "";
+	private String display = "0";
 	boolean isOpsSelected = false;
 
 	public void setOps(String str) {
 		if (str.equals("=")){
 			compute();
-			this.display = formatResult(this.result);
-			this.previousNumber = display;
-			isOpsSelected = false;
 		}
 		else if (str.equals("C")){
 			resetCalc();
 		}
 		else {
+			if ( isOpsSelected == true ) {
+				compute();
+			}else {
 			this.ops = str;
 			isOpsSelected = true;
 			previousNumber = actualNumber;
 			actualNumber = "";
 			this.display = this.ops;
+			}
 		}
 	}
 
@@ -52,6 +50,10 @@ public class Model {
 		} else if (this.ops == "/") {
 			this.result = Double.parseDouble(previousNumber) / Double.parseDouble(actualNumber);
 		}
+		this.display = formatResult(this.result);
+		this.previousNumber = display;
+		this.actualNumber = "";
+		isOpsSelected = false;
 	}
 
 	private String formatResult(double d) {
@@ -62,9 +64,12 @@ public class Model {
 				return String.format("%s", d);
 		}
 	}
+
 	private void resetCalc() {
 		this.display = "0";
-		this.actualNumber="";
-		this.previousNumber="";
+		this.actualNumber = "";
+		this.previousNumber = "";
+		isOpsSelected = false;
+		result = 0.0;
 	}
 }

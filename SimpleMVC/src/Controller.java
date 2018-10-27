@@ -26,8 +26,8 @@ public class Controller {
 	class listenForDigitButton implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			String str = ((JButton) e.getSource()).getText();
-			theModel.digitCompute(str);
-			theView.setDisplay(theModel.getActualValue());
+			theModel.setDigit(str);
+			theView.setDisplay(theModel.getDisplay());
 		}
 	}
 

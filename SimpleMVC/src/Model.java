@@ -14,36 +14,32 @@ public class Model {
 	private String display = "";
 	boolean isOpsSelected = false;
 
-	public String getActualValue() {
-		return actualNumber;
-	}
-
 	public void setOps(String str) {
-		if (str.equals("="))
-		{
+		if (str.equals("=")){
 			compute();
-			display = formatResult(this.result);
+			this.display = formatResult(this.result);
 		}
-		else
-		{
-			display = actualNumber;
+		else if (str.equals("C")){
+			this.display = "0";
+			this.actualNumber="";
+			this.previousNumber="";
+		}
+		else {
 			this.ops = str;
 			isOpsSelected = true;
 			previousNumber = actualNumber;
 			actualNumber = "";
+			this.display = this.ops;
 		}
 	}
 
-	public String getOps() {
-		return this.ops;
-	}
-	
 	public String getDisplay() {
 		return this.display;
 	}
 
-	public void digitCompute(String str) {
+	public void setDigit(String str) {
 		this.actualNumber += str;
+		this.display = actualNumber;
 	}
 
 	private void compute() {

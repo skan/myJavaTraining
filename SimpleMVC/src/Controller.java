@@ -7,10 +7,10 @@ import javax.swing.JButton;
 // between the View and Model
 
 public class Controller {
-	
+
 	private View theView;
 	private Model theModel;
-	
+
 	public Controller(View theView, Model theModel) {
 		this.theView = theView;
 		this.theModel = theModel;
@@ -20,19 +20,23 @@ public class Controller {
 		// in the CalculateListener inner class
 		
 		this.theView.addCalculateListener(new listenForDigitButton());
+		this.theView.addOpsListener(new listenForOpsButton());
 	}
-	
 
-	class listenForDigitButton implements ActionListener{
-
+	class listenForDigitButton implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			
 			String str = ((JButton) e.getSource()).getText();
 			theModel.digitCompute(str);
 			theView.setDisplay(theModel.getActualValue());
-			
 		}
-		
+	}
+	class listenForOpsButton implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			String str = ((JButton) e.getSource()).getText();
+			theModel.setOps(str);
+			theView.setDisplay(theModel.getOps());
+		}
 	}
 	
+
 }

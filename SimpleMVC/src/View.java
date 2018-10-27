@@ -16,6 +16,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import vue.MyWindow.OpsListener;
+
 public class View extends JFrame{
 
 	private JLabel label_result = new JLabel("myLabel");
@@ -81,6 +83,7 @@ public class View extends JFrame{
 		
 	}
 	
+	
 	void addCalculateListener(ActionListener listenForDigitButton){
 		
 		// boutons actions
@@ -95,6 +98,14 @@ public class View extends JFrame{
 		button_9.addActionListener(listenForDigitButton);
 		button_0.addActionListener(listenForDigitButton);
 		//button_dot.addActionListener(new Bouton_dot_Listener());
+	}
+	
+	void addOpsListener(ActionListener listenForOpsButton)
+	{
+		button_add.addActionListener(listenForOpsButton);
+		button_minus.addActionListener(listenForOpsButton);
+		button_mult.addActionListener(listenForOpsButton);
+		button_div.addActionListener(listenForOpsButton);
 	}
 	
 	// Open a popup that contains the error message passed

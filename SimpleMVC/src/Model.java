@@ -8,11 +8,17 @@ public class Model {
 	// entered in the view
 	
 	private String actualValue = "";
+	private String ops ="";
 	public String getActualValue()
 	{
 		return actualValue;
 	}
-	
+	public void setOps(String str ) {
+		this.ops = str;
+	}
+	public String getOps() {
+		return this.ops;
+	}
 	public void digitCompute(String str)
 	{
 		this.actualValue += str;		

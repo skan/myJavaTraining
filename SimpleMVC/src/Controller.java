@@ -34,17 +34,8 @@ public class Controller {
 	class listenForOpsButton implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			String str = ((JButton) e.getSource()).getText();
-			if (str.equals("="))
-			{
-				theModel.compute();
-				theView.setDisplay(theModel.getResult());
-			}
-			else
-			{
-				theModel.setOps(str);
-				theView.setDisplay(theModel.getOps());
-			}
-
+			theModel.setOps(str);
+			theView.setDisplay(theModel.getDisplay());
 		}
 	}
 

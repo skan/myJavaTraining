@@ -11,6 +11,7 @@ public class Model {
 	private String previousNumber = "";
 	private String ops = "";
 	private double result = 0.0;
+	private String display = "";
 	boolean isOpsSelected = false;
 
 	public String getActualValue() {
@@ -18,21 +19,34 @@ public class Model {
 	}
 
 	public void setOps(String str) {
-		this.ops = str;
-		isOpsSelected = true;
-		previousNumber = actualNumber;
-		actualNumber = "";
+		if (str.equals("="))
+		{
+			compute();
+			display = formatResult(this.result);
+		}
+		else
+		{
+			display = actualNumber;
+			this.ops = str;
+			isOpsSelected = true;
+			previousNumber = actualNumber;
+			actualNumber = "";
+		}
 	}
 
 	public String getOps() {
 		return this.ops;
+	}
+	
+	public String getDisplay() {
+		return this.display;
 	}
 
 	public void digitCompute(String str) {
 		this.actualNumber += str;
 	}
 
-	public void compute() {
+	private void compute() {
 		if (this.ops.equals("+")) {
 			this.result = Double.parseDouble(previousNumber) + Double.parseDouble(actualNumber);
 		} else if (this.ops == "-") {
@@ -44,12 +58,12 @@ public class Model {
 		}
 	}
 
-	public String getResult() {
+	private String formatResult(double d) {
 		{
-			if (this.result == (long) this.result)
-				return String.format("%d", (long) this.result);
+			if (d == (long) d)
+				return String.format("%d", (long) d);
 			else
-				return String.format("%s", this.result);
+				return String.format("%s", d);
 		}
 	}
 }

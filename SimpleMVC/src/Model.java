@@ -8,13 +8,19 @@ public class Model {
 	// entered in the view
 	
 	private String actualValue = "";
+	private String previousValue ="";
 	private String ops ="";
+	boolean isOpsSelected = false;
+	
 	public String getActualValue()
 	{
 		return actualValue;
 	}
 	public void setOps(String str ) {
 		this.ops = str;
+		isOpsSelected = true;
+		previousValue = actualValue;
+		actualValue = "";
 	}
 	public String getOps() {
 		return this.ops;

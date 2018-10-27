@@ -8,22 +8,14 @@ public class Model {
 	// entered in the view
 	
 	private String actualValue = "";
+	public String getActualValue()
+	{
+		return actualValue;
+	}
 	
 	public void digitCompute(String str)
 	{
-		
-	}
-	
-	public void addTwoNumbers(int firstNumber, int secondNumber){
-		
-		calculationValue = firstNumber + secondNumber;
-		
-	}
-	
-	public int getCalculationValue(){
-		
-		return calculationValue;
-		
+		this.actualValue += str;		
 	}
 	
 }

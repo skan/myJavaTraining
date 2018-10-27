@@ -65,52 +65,36 @@ public class View extends JFrame{
 
 		
 	}
-	
-	public int getFirstNumber(){
 		
-		return Integer.parseInt(firstNumber.getText());
+	public void setDisplay(String solution){
 		
-	}
-	
-	public int getSecondNumber(){
-		
-		return Integer.parseInt(secondNumber.getText());
-		
-	}
-	
-	public int getCalcSolution(){
-		
-		return Integer.parseInt(calcSolution.getText());
-		
-	}
-	
-	public void setCalcSolution(int solution){
-		
-		calcSolution.setText(Integer.toString(solution));
+		label_result.setText(solution);
 		
 	}
 	
 	// If the calculateButton is clicked execute a method
 	// in the Controller named actionPerformed
 	
+	void addDigitListener(ActionListener listenForDigit){
+		
+		calculateButton.addActionListener(listenForDigit);
+		
+	}
+	
 	void addCalculateListener(ActionListener listenForDigitButton){
 		
-		calculateButton.addActionListener(listenForDigitButton);
 		// boutons actions
-		button_1.addActionListener(new DigitListener());
-		button_2.addActionListener(new DigitListener());
-		button_3.addActionListener(new DigitListener());
-		button_4.addActionListener(new DigitListener());
-		button_5.addActionListener(new DigitListener());
-		button_6.addActionListener(new DigitListener());
-		button_7.addActionListener(new DigitListener());
-		button_8.addActionListener(new DigitListener());
-		button_9.addActionListener(new DigitListener());
-		button_0.addActionListener(new DigitListener());
-		button_dot.addActionListener(new Bouton_dot_Listener());
-		
-		
-		
+		button_1.addActionListener(listenForDigitButton);
+		button_2.addActionListener(listenForDigitButton);
+		button_3.addActionListener(listenForDigitButton);
+		button_4.addActionListener(listenForDigitButton);
+		button_5.addActionListener(listenForDigitButton);
+		button_6.addActionListener(listenForDigitButton);
+		button_7.addActionListener(listenForDigitButton);
+		button_8.addActionListener(listenForDigitButton);
+		button_9.addActionListener(listenForDigitButton);
+		button_0.addActionListener(listenForDigitButton);
+		//button_dot.addActionListener(new Bouton_dot_Listener());
 	}
 	
 	// Open a popup that contains the error message passed

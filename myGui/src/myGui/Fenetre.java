@@ -12,7 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import com.sun.xml.internal.ws.api.config.management.policy.ManagedServiceAssertion.ImplementationRecord;
+
 
 public class Fenetre extends JFrame implements ActionListener {
 	private Panneau pan = new Panneau();
@@ -113,8 +113,8 @@ public class Fenetre extends JFrame implements ActionListener {
 			isAnimate = true;
 			bouton.setEnabled(false);
 			bouton2.setEnabled(true);
-			//go();
-			t = new Thread (new PlayAnimation());
+			// go();
+			t = new Thread(new PlayAnimation());
 			t.start();
 		}
 	}
@@ -127,8 +127,8 @@ public class Fenetre extends JFrame implements ActionListener {
 			bouton2.setEnabled(false);
 		}
 	}
-	
-	class PlayAnimation implements Runnable{
+
+	class PlayAnimation implements Runnable {
 		public void run() {
 			go();
 		}

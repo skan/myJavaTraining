@@ -4,6 +4,5 @@ public class Test {
 		Fenetre f = new Fenetre();
 		f.setVisible(true);
 	}
-	
 
 }

@@ -12,6 +12,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.sun.xml.internal.ws.api.config.management.policy.ManagedServiceAssertion.ImplementationRecord;
+
 public class Fenetre extends JFrame implements ActionListener {
 	private Panneau pan = new Panneau();
 	private JButton bouton = new Bouton("GO");
@@ -22,6 +24,7 @@ public class Fenetre extends JFrame implements ActionListener {
 	boolean isAnimate = true;
 	boolean isBackX, isBackY;
 	private int x, y;
+	private Thread t;
 
 	public Fenetre() {
 		this.setTitle("Animation");
@@ -110,7 +113,9 @@ public class Fenetre extends JFrame implements ActionListener {
 			isAnimate = true;
 			bouton.setEnabled(false);
 			bouton2.setEnabled(true);
-			go();
+			//go();
+			t = new Thread (new PlayAnimation());
+			t.start();
 		}
 	}
 
@@ -120,6 +125,12 @@ public class Fenetre extends JFrame implements ActionListener {
 			isAnimate = false;
 			bouton.setEnabled(true);
 			bouton2.setEnabled(false);
+		}
+	}
+	
+	class PlayAnimation implements Runnable{
+		public void run() {
+			go();
 		}
 	}
 }

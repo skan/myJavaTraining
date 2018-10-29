@@ -12,21 +12,20 @@ public class Model {
 	boolean isOpsSelected = false;
 
 	public void setOps(String str) {
-		if (str.equals("=")){
+		if (str.equals("=")) {
 			compute();
-		}
-		else if (str.equals("C")){
+			isOpsSelected = false;
+		} else if (str.equals("C")) {
 			resetCalc();
-		}
-		else {
-			if ( isOpsSelected == true ) {
+		} else {
+			if (isOpsSelected == true) {
 				compute();
-			}else {
-			this.ops = str;
-			isOpsSelected = true;
-			previousNumber = actualNumber;
-			actualNumber = "";
-			this.display = this.ops;
+			} else {
+				this.ops = str;
+				isOpsSelected = true;
+				previousNumber = actualNumber;
+				actualNumber = "";
+				this.display = this.ops;
 			}
 		}
 	}
@@ -53,7 +52,6 @@ public class Model {
 		this.display = formatResult(this.result);
 		this.previousNumber = display;
 		this.actualNumber = "";
-		isOpsSelected = false;
 	}
 
 	private String formatResult(double d) {

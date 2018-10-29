@@ -191,9 +191,9 @@ public class MyWindow extends JFrame {
 
 		button_add.addActionListener(new OpsListener());
 		button_minus.addActionListener(new OpsListener());
-		button_equal.addActionListener(new Bouton_equal_Listener());
 		button_mult.addActionListener(new OpsListener());
 		button_div.addActionListener(new OpsListener());
+		button_equal.addActionListener(new Bouton_equal_Listener());
 		button_clear.addActionListener(new Bouton_clear_Listener());
 	}
 	private static String fmt_double(double d)

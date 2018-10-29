@@ -99,7 +99,7 @@ public class View extends JFrame{
 		button_8.addActionListener(listenForDigitButton);
 		button_9.addActionListener(listenForDigitButton);
 		button_0.addActionListener(listenForDigitButton);
-		//button_dot.addActionListener(new Bouton_dot_Listener());
+		button_dot.addActionListener(listenForDigitButton);
 	}
 	
 	void addOpsListener(ActionListener listenForOpsButton)

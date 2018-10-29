@@ -25,7 +25,7 @@ public class Model {
 				System.out.println("debug into ops select true");
 				compute();
 				this.display = formatResult(this.result);
-				this.previousNumber = this.display;				
+				this.previousNumber = this.display;
 			} else {
 				this.ops = str;
 				this.display = this.ops;
@@ -44,7 +44,10 @@ public class Model {
 	}
 
 	public void setDigit(String str) {
-		this.actualNumber += str;
+		if ((str == ".") && (this.actualNumber == ""))
+			this.actualNumber = "0.";
+		else
+			this.actualNumber += str;
 		this.display = actualNumber;
 	}
 
@@ -60,7 +63,7 @@ public class Model {
 				this.result = Double.parseDouble(previousNumber) * Double.parseDouble(actualNumber);
 			} else if (this.ops == "/") {
 				this.result = Double.parseDouble(previousNumber) / Double.parseDouble(actualNumber);
-			}			
+			}
 		}
 	}
 

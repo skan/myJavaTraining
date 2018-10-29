@@ -14,19 +14,28 @@ public class Model {
 	public void setOps(String str) {
 		if (str.equals("=")) {
 			compute();
+			this.display = formatResult(this.result);
+			this.previousNumber = display;
+			this.actualNumber = "";
 			isOpsSelected = false;
 		} else if (str.equals("C")) {
 			resetCalc();
 		} else {
 			if (isOpsSelected == true) {
+				System.out.println("debug into ops select true");
 				compute();
+				this.display = formatResult(this.result);
+				this.previousNumber = this.display;				
 			} else {
 				this.ops = str;
-				isOpsSelected = true;
-				previousNumber = actualNumber;
-				actualNumber = "";
 				this.display = this.ops;
+				previousNumber = actualNumber;
+				System.out.println("into the else : previous = 0");
+				this.previousNumber = this.actualNumber;
 			}
+			this.ops = str;
+			isOpsSelected = true;
+			actualNumber = "";
 		}
 	}
 
@@ -40,18 +49,19 @@ public class Model {
 	}
 
 	private void compute() {
-		if (this.ops.equals("+")) {
-			this.result = Double.parseDouble(previousNumber) + Double.parseDouble(actualNumber);
-		} else if (this.ops == "-") {
-			this.result = Double.parseDouble(previousNumber) - Double.parseDouble(actualNumber);
-		} else if (this.ops == "*") {
-			this.result = Double.parseDouble(previousNumber) * Double.parseDouble(actualNumber);
-		} else if (this.ops == "/") {
-			this.result = Double.parseDouble(previousNumber) / Double.parseDouble(actualNumber);
+		System.out.println("debug previous number: " + this.previousNumber);
+		System.out.println("debug actual number  : " + this.actualNumber);
+		if ((this.actualNumber != "") && this.previousNumber != "") {
+			if (this.ops.equals("+")) {
+				this.result = Double.parseDouble(previousNumber) + Double.parseDouble(actualNumber);
+			} else if (this.ops == "-") {
+				this.result = Double.parseDouble(previousNumber) - Double.parseDouble(actualNumber);
+			} else if (this.ops == "*") {
+				this.result = Double.parseDouble(previousNumber) * Double.parseDouble(actualNumber);
+			} else if (this.ops == "/") {
+				this.result = Double.parseDouble(previousNumber) / Double.parseDouble(actualNumber);
+			}			
 		}
-		this.display = formatResult(this.result);
-		this.previousNumber = display;
-		this.actualNumber = "";
 	}
 
 	private String formatResult(double d) {

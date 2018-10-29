@@ -29,9 +29,9 @@ public class Model {
 			} else {
 				this.ops = str;
 				this.display = this.ops;
-				previousNumber = actualNumber;
 				System.out.println("into the else : previous = 0");
-				this.previousNumber = this.actualNumber;
+				if (this.actualNumber != "") // case ops button is called after equal ops
+					this.previousNumber = this.actualNumber;
 			}
 			this.ops = str;
 			isOpsSelected = true;

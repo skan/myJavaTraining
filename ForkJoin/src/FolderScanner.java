@@ -17,20 +17,16 @@ public class FolderScanner {
 		filter = f;
 	}
 
-	/**
-	 * Méthode qui se charge de scanner les dossiers de façon récursive
-	 * 
-	 * @throws ScanException
-	 */
+
+	// folders scan
 	public long sequentialScan() throws ScanException {
-		// Si le chemin n'est pas valide, on lève une exception
+		// check path correctness
 		if (path == null || path.equals(""))
 			throw new ScanException("Chemin à scanner non valide (vide ou null) !");
 
-		System.out.println(
-				"Scan du dossier : " + path + " à la recherche des fichiers portant l'extension " + this.filter);
+		System.out.println("scanning: " + path + " looking for extension: " + this.filter);
 
-		// On liste maintenant le contenu du répertoire pour traiter les sous-dossiers
+		// list results
 		try (DirectoryStream<Path> listing = Files.newDirectoryStream(path)) {
 			for (Path nom : listing) {
 				// S'il s'agit d'un dossier, on le scanne grâce à notre objet

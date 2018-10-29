@@ -117,6 +117,7 @@ public class Panneau extends JPanel {
 
 	// Retourne le nombre à retrancher ou à ajouter pour le morphing
 	private int getUsedSize() {
+
 		int res = 0;
 		// Si le nombre de tours est de dix, on réinitialise l'incrément et on retourne
 		// 1

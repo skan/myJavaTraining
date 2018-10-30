@@ -16,8 +16,8 @@ import javax.swing.JPanel;
 
 public class Fenetre extends JFrame implements ActionListener {
 	private Panneau pan = new Panneau();
-	private JButton bouton = new Bouton("GO");
-	private JButton bouton2 = new JButton("STOP");
+	private JButton bouton_go = new Bouton("GO");
+	private JButton bouton_stop = new JButton("STOP");
 	private JPanel container = new JPanel();
 	private JLabel label = new JLabel("Le JLabel");
 	private int compteur = 0;
@@ -39,14 +39,14 @@ public class Fenetre extends JFrame implements ActionListener {
 
 		// South container
 		JPanel panel_south = new JPanel();
-		panel_south.add(bouton);
-		panel_south.add(bouton2);
+		panel_south.add(bouton_go);
+		panel_south.add(bouton_stop);
 		container.add(panel_south, BorderLayout.SOUTH);
 
 		// actions for button clicks
-		bouton.setPreferredSize(new Dimension(150, 120));
-		bouton.addActionListener(new BoutonListener());
-		bouton2.addActionListener(new BoutonListener2());
+		bouton_go.setPreferredSize(new Dimension(150, 120));
+		bouton_go.addActionListener(new BoutonListener());
+		bouton_stop.addActionListener(new BoutonListener2());
 
 		// North container
 		container.add(label, BorderLayout.NORTH);
@@ -59,17 +59,6 @@ public class Fenetre extends JFrame implements ActionListener {
 		this.setContentPane(container);
 		this.setVisible(true);
 		go();
-	}
-
-	public void actionPerformed(ActionEvent arg0) {
-		if (arg0.getSource() == bouton) {
-			this.compteur++;
-			label.setText("clickS count = " + this.compteur);
-		} else if (arg0.getSource() == bouton2) {
-			this.compteur--;
-			label.setText("clickS count = " + this.compteur);
-
-		}
 	}
 
 	private void go() {
@@ -111,9 +100,8 @@ public class Fenetre extends JFrame implements ActionListener {
 
 		public void actionPerformed(ActionEvent arg0) {
 			isAnimate = true;
-			bouton.setEnabled(false);
-			bouton2.setEnabled(true);
-			// go();
+			bouton_go.setEnabled(false);
+			bouton_stop.setEnabled(true);
 			t = new Thread(new PlayAnimation());
 			t.start();
 		}
@@ -123,8 +111,8 @@ public class Fenetre extends JFrame implements ActionListener {
 
 		public void actionPerformed(ActionEvent e) {
 			isAnimate = false;
-			bouton.setEnabled(true);
-			bouton2.setEnabled(false);
+			bouton_go.setEnabled(true);
+			bouton_stop.setEnabled(false);
 		}
 	}
 

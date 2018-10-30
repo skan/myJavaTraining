@@ -50,6 +50,9 @@ public class Fenetre extends JFrame implements ActionListener {
 		Animate.addSeparator();
 		Animate.add(menuItemExit);
 		
+		menuItemGo.addActionListener(new BoutonGoListener());
+		menuItemStop.addActionListener(new BoutonStopListener());
+		
 		menuItemExit.addActionListener(new ActionListener(){
 	        public void actionPerformed(ActionEvent event){
 	          System.exit(0);
@@ -70,7 +73,7 @@ public class Fenetre extends JFrame implements ActionListener {
 		// actions for button clicks
 		bouton_go.setPreferredSize(new Dimension(50, 50));
 		bouton_go.addActionListener(new BoutonGoListener());
-		bouton_stop.addActionListener(new BoutonStopListener2());
+		bouton_stop.addActionListener(new BoutonStopListener());
 
 		// North container
 		container.add(label, BorderLayout.NORTH);
@@ -140,7 +143,7 @@ public class Fenetre extends JFrame implements ActionListener {
 		}
 	}
 
-	class BoutonStopListener2 implements ActionListener {
+	class BoutonStopListener implements ActionListener {
 
 		public void actionPerformed(ActionEvent e) {
 			isAnimate = false;

@@ -49,6 +49,12 @@ public class Fenetre extends JFrame implements ActionListener {
 		Animate.add(menuItemStop);
 		Animate.addSeparator();
 		Animate.add(menuItemExit);
+		
+		menuItemExit.addActionListener(new ActionListener(){
+	        public void actionPerformed(ActionEvent event){
+	          System.exit(0);
+	        }
+	      });
 
 		// Center container
 		container.setBackground(Color.white);

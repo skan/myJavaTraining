@@ -10,27 +10,45 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 
 
 public class Fenetre extends JFrame implements ActionListener {
+	private JPanel container = new JPanel();
 	private Panneau pan = new Panneau();
 	private JButton bouton_go = new Bouton("GO");
 	private JButton bouton_stop = new JButton("STOP");
-	private JPanel container = new JPanel();
 	private JLabel label = new JLabel("Le JLabel");
-	private int compteur = 0;
+	
 	boolean isAnimate = true;
 	boolean isBackX, isBackY;
 	private int x, y;
 	private Thread t;
+	
+	private JMenuBar menuBar = new JMenuBar();
+	private JMenu Animate = new JMenu("Animate");
+	private JMenuItem menuItemGo = new JMenuItem("Go");
+	private JMenuItem menuItemStop = new JMenuItem("Stop");
+	private JMenuItem menuItemExit = new JMenuItem("Exit");
 
 	public Fenetre() {
 		this.setTitle("Animation");
 		this.setSize(300, 300);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
+		
+		//Menu
+		this.setJMenuBar(menuBar);
+		menuBar.add(Animate);
+		Animate.add(menuItemGo);
+		Animate.add(menuItemStop);
+		Animate.addSeparator();
+		Animate.add(menuItemExit);
 
 		// Center container
 		container.setBackground(Color.white);
@@ -44,9 +62,9 @@ public class Fenetre extends JFrame implements ActionListener {
 		container.add(panel_south, BorderLayout.SOUTH);
 
 		// actions for button clicks
-		bouton_go.setPreferredSize(new Dimension(150, 120));
-		bouton_go.addActionListener(new BoutonListener());
-		bouton_stop.addActionListener(new BoutonListener2());
+		bouton_go.setPreferredSize(new Dimension(50, 50));
+		bouton_go.addActionListener(new BoutonGoListener());
+		bouton_stop.addActionListener(new BoutonStopListener2());
 
 		// North container
 		container.add(label, BorderLayout.NORTH);
@@ -96,18 +114,27 @@ public class Fenetre extends JFrame implements ActionListener {
 		}
 	}
 
-	class BoutonListener implements ActionListener {
+	class BoutonGoListener implements ActionListener {
 
 		public void actionPerformed(ActionEvent arg0) {
-			isAnimate = true;
-			bouton_go.setEnabled(false);
-			bouton_stop.setEnabled(true);
-			t = new Thread(new PlayAnimation());
-			t.start();
+			
+			JOptionPane jop_confirmGo = new JOptionPane();			
+			int option = jop_confirmGo.showConfirmDialog(null, 
+					"Really go ?", 
+					"Go confirmation", 
+					JOptionPane.YES_NO_OPTION, 
+					JOptionPane.QUESTION_MESSAGE);
+			if(option == JOptionPane.OK_OPTION){
+				isAnimate = true;
+				bouton_go.setEnabled(false);
+				bouton_stop.setEnabled(true);
+				t = new Thread(new PlayAnimation());
+				t.start();			
+			}
 		}
 	}
 
-	class BoutonListener2 implements ActionListener {
+	class BoutonStopListener2 implements ActionListener {
 
 		public void actionPerformed(ActionEvent e) {
 			isAnimate = false;

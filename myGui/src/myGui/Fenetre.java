@@ -179,9 +179,7 @@ public class Fenetre extends JFrame {
 
 	class BoutonGoListener implements ActionListener {
 
-
 		public void actionPerformed(ActionEvent arg0) {
-
 
 			int option = JOptionPane.showConfirmDialog(null, "Really go ?", "Go confirmation",
 					JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
@@ -190,7 +188,7 @@ public class Fenetre extends JFrame {
 				bouton_go.setEnabled(false);
 				bouton_stop.setEnabled(true);
 				t = new Thread(new PlayAnimation());
-				t.start();				
+				t.start();
 			}
 			textField_out.setText(textField_name.getText());
 		}
@@ -236,24 +234,29 @@ public class Fenetre extends JFrame {
 		}
 	}
 
-	class textKeyListener implements KeyListener{
+	class textKeyListener implements KeyListener {
 		public void keyPressed(KeyEvent event) {
-		      if (event.getKeyCode() == 10)
-		    	  textField_out.setText(textField_name.getText());
+			if (event.getKeyCode() == 10) {
+				textField_out.setText(textField_name.getText());
+				JOptionPane msgDiag = new JOptionPane();
+				msgDiag.showMessageDialog(null, "well done", "Info", JOptionPane.INFORMATION_MESSAGE);
+			}
+
 		}
 
 		@Override
 		public void keyReleased(KeyEvent arg0) {
 			// TODO Auto-generated method stub
-			
+
 		}
 
 		@Override
 		public void keyTyped(KeyEvent arg0) {
 			// TODO Auto-generated method stub
-			
+
 		}
 	}
+
 	private void setMorph(boolean val) {
 		if (val == true) {
 			pan.setMorph(true);

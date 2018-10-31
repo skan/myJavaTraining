@@ -6,7 +6,10 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -18,6 +21,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JTextField;
 
 public class Fenetre extends JFrame {
 	/**
@@ -43,13 +47,17 @@ public class Fenetre extends JFrame {
 
 	// combo for form selection
 	private JComboBox<String> comboForm = new JComboBox<String>();
+	// check & radio button for morphology
 	private JCheckBox checkBox_morph = new JCheckBox("Morph");
 	private JRadioButton radioB_morph_on = new JRadioButton("Morph ON");
 	private JRadioButton radioB_morph_off = new JRadioButton("morph off");
 
+	private JTextField textField_name = new JTextField();
+	private JTextField textField_out = new JTextField();
+
 	public Fenetre() {
 		this.setTitle("Animation");
-		this.setSize(300, 300);
+		this.setSize(600, 600);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 
@@ -109,13 +117,26 @@ public class Fenetre extends JFrame {
 		checkBox_morph.addActionListener(new checkBoxMorphListener());
 
 		// add radio button
-		JPanel topRadio = new JPanel();
-		container.add(topRadio, BorderLayout.EAST);
-		topRadio.add(radioB_morph_off);
-		topRadio.add(radioB_morph_on);
+		JPanel panelEast = new JPanel();
+		container.add(panelEast, BorderLayout.EAST);
 		radioB_morph_off.addActionListener(new radioBMorphListener());
 		radioB_morph_on.addActionListener(new radioBMorphListener());
 		radioB_morph_off.setSelected(true);
+
+		// East panel setup
+		panelEast.setLayout(new BoxLayout(panelEast, BoxLayout.Y_AXIS));
+		panelEast.add(textField_name);
+		panelEast.add(textField_out);
+		panelEast.add(radioB_morph_off);
+		panelEast.add(radioB_morph_on);
+
+		// text field manips
+		Font textFont = new Font("Arial", Font.BOLD, 14);
+		textField_name.setFont(textFont);
+		textField_name.setPreferredSize(new Dimension(150, 30));
+		textField_name.setBackground(Color.gray);
+		textField_name.addKeyListener(new textKeyListener());
+
 		this.setContentPane(container);
 		this.setVisible(true);
 		go();
@@ -158,7 +179,9 @@ public class Fenetre extends JFrame {
 
 	class BoutonGoListener implements ActionListener {
 
+
 		public void actionPerformed(ActionEvent arg0) {
+
 
 			int option = JOptionPane.showConfirmDialog(null, "Really go ?", "Go confirmation",
 					JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
@@ -167,8 +190,9 @@ public class Fenetre extends JFrame {
 				bouton_go.setEnabled(false);
 				bouton_stop.setEnabled(true);
 				t = new Thread(new PlayAnimation());
-				t.start();
+				t.start();				
 			}
+			textField_out.setText(textField_name.getText());
 		}
 	}
 
@@ -212,6 +236,24 @@ public class Fenetre extends JFrame {
 		}
 	}
 
+	class textKeyListener implements KeyListener{
+		public void keyPressed(KeyEvent event) {
+		      if (event.getKeyCode() == 10)
+		    	  textField_out.setText(textField_name.getText());
+		}
+
+		@Override
+		public void keyReleased(KeyEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void keyTyped(KeyEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+	}
 	private void setMorph(boolean val) {
 		if (val == true) {
 			pan.setMorph(true);

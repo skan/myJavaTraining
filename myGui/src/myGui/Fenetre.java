@@ -32,6 +32,7 @@ public class Fenetre extends JFrame {
 	private Panneau pan = new Panneau();
 	private JButton bouton_go = new MyButton("GO");
 	private JButton bouton_stop = new JButton("STOP");
+	private JButton bouton_getName = new JButton("YouNameTest");
 	private JLabel label = new JLabel("Le JLabel");
 
 	boolean isAnimate = true;
@@ -129,6 +130,7 @@ public class Fenetre extends JFrame {
 		panelEast.add(textField_out);
 		panelEast.add(radioB_morph_off);
 		panelEast.add(radioB_morph_on);
+		panelEast.add(bouton_getName);
 
 		// text field manips
 		Font textFont = new Font("Arial", Font.BOLD, 14);
@@ -137,6 +139,8 @@ public class Fenetre extends JFrame {
 		textField_name.setBackground(Color.gray);
 		textField_name.addKeyListener(new textKeyListener());
 
+		// bouton for msg diag demo
+		bouton_getName.addActionListener(new buttonGetNameActionListener());
 		this.setContentPane(container);
 		this.setVisible(true);
 		go();
@@ -224,7 +228,7 @@ public class Fenetre extends JFrame {
 		}
 	}
 
-	class radioBMorphListener implements ActionListener {
+	class radioBMorphListener implements ActionListener { 
 		public void actionPerformed(ActionEvent e) {
 			if (e.getSource() == radioB_morph_on) {
 				setMorph(true);
@@ -241,7 +245,6 @@ public class Fenetre extends JFrame {
 				JOptionPane msgDiag = new JOptionPane();
 				msgDiag.showMessageDialog(null, "well done", "Info", JOptionPane.INFORMATION_MESSAGE);
 			}
-
 		}
 
 		@Override
@@ -257,6 +260,12 @@ public class Fenetre extends JFrame {
 		}
 	}
 
+	class buttonGetNameActionListener implements ActionListener{
+		public void actionPerformed (ActionEvent e) {
+			String nom = JOptionPane.showInputDialog(null, "your name", "7akem", JOptionPane.QUESTION_MESSAGE);
+			JOptionPane.showMessageDialog(null, "your are " + nom, "identity", JOptionPane.INFORMATION_MESSAGE);
+		}
+	}
 	private void setMorph(boolean val) {
 		if (val == true) {
 			pan.setMorph(true);

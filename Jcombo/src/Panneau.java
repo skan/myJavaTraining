@@ -12,7 +12,7 @@ public class Panneau extends JPanel {
 	// Un booléen pour le mode morphing
 	// Un autre pour savoir si la taille doit être réduite
 	private boolean morph = false, reduce = false;
-	private String forme = "ROND";
+	private String forme = "CARRE";
 	// Le compteur de rafraîchissements
 	private int increment = 0;
 

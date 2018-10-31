@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 public class Panneau extends JPanel {
 	private int posX = 0;
 	private int posY = 0;
-	private String forme = "TRIANGLE";
+	private String forme = "CARRE";
 
 	public void paintComponent(Graphics g) {
 		g.setColor(Color.white);

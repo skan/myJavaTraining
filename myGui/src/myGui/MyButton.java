@@ -14,11 +14,11 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
 
-public class Bouton extends JButton implements MouseListener {
+public class MyButton extends JButton implements MouseListener {
 	private String name;
 	private Image img;
 
-	public Bouton(String str) {
+	public MyButton(String str) {
 		super(str);
 		this.name = str;
 		try {

@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -21,7 +22,7 @@ import javax.swing.JPanel;
 public class Fenetre extends JFrame implements ActionListener {
 	private JPanel container = new JPanel();
 	private Panneau pan = new Panneau();
-	private JButton bouton_go = new Bouton("GO");
+	private JButton bouton_go = new MyButton("GO");
 	private JButton bouton_stop = new JButton("STOP");
 	private JLabel label = new JLabel("Le JLabel");
 	
@@ -31,11 +32,14 @@ public class Fenetre extends JFrame implements ActionListener {
 	private Thread t;
 	
 	private JMenuBar menuBar = new JMenuBar();
-	private JMenu Animate = new JMenu("Animate");
+	private JMenu animate = new JMenu("Animate");
 	private JMenuItem menuItemGo = new JMenuItem("Go");
 	private JMenuItem menuItemStop = new JMenuItem("Stop");
 	private JMenuItem menuItemExit = new JMenuItem("Exit");
 
+	// combo for form slection
+	private JComboBox comboForm = new JComboBox();
+	
 	public Fenetre() {
 		this.setTitle("Animation");
 		this.setSize(300, 300);
@@ -44,11 +48,11 @@ public class Fenetre extends JFrame implements ActionListener {
 		
 		//Menu
 		this.setJMenuBar(menuBar);
-		menuBar.add(Animate);
-		Animate.add(menuItemGo);
-		Animate.add(menuItemStop);
-		Animate.addSeparator();
-		Animate.add(menuItemExit);
+		menuBar.add(animate);
+		animate.add(menuItemGo);
+		animate.add(menuItemStop);
+		animate.addSeparator();
+		animate.add(menuItemExit);
 		
 		menuItemGo.addActionListener(new BoutonGoListener());
 		menuItemStop.addActionListener(new BoutonStopListener());

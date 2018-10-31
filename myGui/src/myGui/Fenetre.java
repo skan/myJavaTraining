@@ -19,7 +19,11 @@ import javax.swing.JPanel;
 
 
 
-public class Fenetre extends JFrame implements ActionListener {
+public class Fenetre extends JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel container = new JPanel();
 	private Panneau pan = new Panneau();
 	private JButton bouton_go = new MyButton("GO");
@@ -37,8 +41,8 @@ public class Fenetre extends JFrame implements ActionListener {
 	private JMenuItem menuItemStop = new JMenuItem("Stop");
 	private JMenuItem menuItemExit = new JMenuItem("Exit");
 
-	// combo for form slection
-	private JComboBox comboForm = new JComboBox();
+	// combo for form selection
+	private JComboBox<String> comboForm = new JComboBox<String>();
 	
 	public Fenetre() {
 		this.setTitle("Animation");
@@ -87,6 +91,17 @@ public class Fenetre extends JFrame implements ActionListener {
 		label.setForeground(Color.DARK_GRAY);
 		label.setHorizontalAlignment(JLabel.CENTER);
 
+		// add combos on a top panel
+		JPanel top = new JPanel();
+		container.add(top, BorderLayout.NORTH);
+		top.add(comboForm);
+		comboForm.addItem("CARRE");
+		comboForm.addItem("TRIANGLE");
+		comboForm.addItem("CERCLE");
+		comboForm.addItem("ETOILE");
+		comboForm.addActionListener(new comboFormListener());
+		
+		
 		this.setContentPane(container);
 		this.setVisible(true);
 		go();
@@ -131,8 +146,7 @@ public class Fenetre extends JFrame implements ActionListener {
 
 		public void actionPerformed(ActionEvent arg0) {
 			
-			JOptionPane jop_confirmGo = new JOptionPane();			
-			int option = jop_confirmGo.showConfirmDialog(null, 
+			int option = JOptionPane.showConfirmDialog(null, 
 					"Really go ?", 
 					"Go confirmation", 
 					JOptionPane.YES_NO_OPTION, 
@@ -156,6 +170,11 @@ public class Fenetre extends JFrame implements ActionListener {
 		}
 	}
 
+	class comboFormListener implements ActionListener{
+		public void actionPerformed (ActionEvent e) {
+			pan.setForm(comboForm.getSelectedItem().toString());
+		}
+	}
 	class PlayAnimation implements Runnable {
 		public void run() {
 			go();

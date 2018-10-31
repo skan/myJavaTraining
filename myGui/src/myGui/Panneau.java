@@ -5,9 +5,14 @@ import java.awt.Graphics;
 import javax.swing.JPanel;
 
 public class Panneau extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int posX = 0;
 	private int posY = 0;
-	private String forme = "CARRE";
+	private String form = "CARRE";
+
 
 	public void paintComponent(Graphics g) {
 		g.setColor(Color.white);
@@ -18,13 +23,13 @@ public class Panneau extends JPanel {
 	}
 
 	private void draw(Graphics g) {
-		if (this.forme.equals("ROND")) {
+		if (this.form.equals("ROND")) {
 			g.fillOval(posX, posY, 50, 50);
 		}
-		if (this.forme.equals("CARRE")) {
+		if (this.form.equals("CARRE")) {
 			g.fillRect(posX, posY, 50, 50);
 		}
-		if (this.forme.equals("TRIANGLE")) {
+		if (this.form.equals("TRIANGLE")) {
 			// Calcul des sommets
 			// Le sommet 1 se situe à la moitié du côté supérieur du carré
 			int s1X = posX + 25;
@@ -41,7 +46,7 @@ public class Panneau extends JPanel {
 			// Nous utilisons la méthode fillPolygon()
 			g.fillPolygon(ptsX, ptsY, 3);
 		}
-		if (this.forme.equals("ETOILE")) {
+		if (this.form.equals("ETOILE")) {
 			// Pour l'étoile, on se contente de tracer des lignes dans le carré
 			// correspondant à peu près à une étoile...
 			// Mais ce code peut être amélioré !
@@ -77,5 +82,10 @@ public class Panneau extends JPanel {
 
 	public void setPosY(int posY) {
 		this.posY = posY;
+	}
+
+	public void setForm(String string) {
+		this.form = string;
+		
 	}
 }

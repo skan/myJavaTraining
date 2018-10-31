@@ -261,9 +261,17 @@ public class Fenetre extends JFrame {
 	}
 
 	class buttonGetNameActionListener implements ActionListener{
+
 		public void actionPerformed (ActionEvent e) {
-			String nom = JOptionPane.showInputDialog(null, "your name", "7akem", JOptionPane.QUESTION_MESSAGE);
-			JOptionPane.showMessageDialog(null, "your are " + nom, "identity", JOptionPane.INFORMATION_MESSAGE);
+			String[] users = {"skander", "hela", "moon", "fatter"};
+			int index = JOptionPane.showOptionDialog(null, 
+					"your name", 
+					"authority", 
+					JOptionPane.YES_NO_CANCEL_OPTION, 
+					JOptionPane.QUESTION_MESSAGE,
+					null, users, users[2]);
+			if (index != -1)
+				JOptionPane.showMessageDialog(null, "your are " + users[index], "identity", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
 	private void setMorph(boolean val) {

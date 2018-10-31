@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -16,8 +17,6 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-
-
 
 public class Fenetre extends JFrame {
 	/**
@@ -29,12 +28,12 @@ public class Fenetre extends JFrame {
 	private JButton bouton_go = new MyButton("GO");
 	private JButton bouton_stop = new JButton("STOP");
 	private JLabel label = new JLabel("Le JLabel");
-	
+
 	boolean isAnimate = true;
 	boolean isBackX, isBackY;
 	private int x, y;
 	private Thread t;
-	
+
 	private JMenuBar menuBar = new JMenuBar();
 	private JMenu animate = new JMenu("Animate");
 	private JMenuItem menuItemGo = new JMenuItem("Go");
@@ -43,7 +42,8 @@ public class Fenetre extends JFrame {
 
 	// combo for form selection
 	private JComboBox<String> comboForm = new JComboBox<String>();
-	
+	private JCheckBox checkBox_morph = new JCheckBox("Morph");
+
 	public Fenetre() {
 		this.setTitle("Animation");
 		this.setSize(300, 300);
@@ -101,6 +101,9 @@ public class Fenetre extends JFrame {
 		comboForm.addItem("ETOILE");
 		comboForm.addActionListener(new comboFormListener());
 		
+		// add checkbox for morph
+		top.add(checkBox_morph);
+		checkBox_morph.addActionListener(new checkBoxMorphListener());
 		
 		this.setContentPane(container);
 		this.setVisible(true);
@@ -145,18 +148,15 @@ public class Fenetre extends JFrame {
 	class BoutonGoListener implements ActionListener {
 
 		public void actionPerformed(ActionEvent arg0) {
-			
-			int option = JOptionPane.showConfirmDialog(null, 
-					"Really go ?", 
-					"Go confirmation", 
-					JOptionPane.YES_NO_OPTION, 
-					JOptionPane.QUESTION_MESSAGE);
-			if(option == JOptionPane.OK_OPTION){
+
+			int option = JOptionPane.showConfirmDialog(null, "Really go ?", "Go confirmation",
+					JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+			if (option == JOptionPane.OK_OPTION) {
 				isAnimate = true;
 				bouton_go.setEnabled(false);
 				bouton_stop.setEnabled(true);
 				t = new Thread(new PlayAnimation());
-				t.start();			
+				t.start();
 			}
 		}
 	}
@@ -170,14 +170,24 @@ public class Fenetre extends JFrame {
 		}
 	}
 
-	class comboFormListener implements ActionListener{
-		public void actionPerformed (ActionEvent e) {
+	class comboFormListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
 			pan.setForm(comboForm.getSelectedItem().toString());
 		}
 	}
+
 	class PlayAnimation implements Runnable {
 		public void run() {
 			go();
+		}
+	}
+
+	class checkBoxMorphListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			if (checkBox_morph.isSelected())
+				pan.setMorph(true);
+			else
+				pan.setMorph(false);
 		}
 	}
 }

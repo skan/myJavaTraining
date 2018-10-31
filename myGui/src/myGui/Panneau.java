@@ -144,7 +144,7 @@ public class Panneau extends JPanel {
 		this.form = string;
 	}
 
-	// Retourne le nombre à retrancher ou à ajouter pour le morphing
+	// Return number to undo for Morphing
 	private int getUsedSize() {
 		int res = 0;
 		// reset number of loop when 10 reached

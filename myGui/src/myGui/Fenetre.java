@@ -17,6 +17,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 
 public class Fenetre extends JFrame {
 	/**
@@ -43,29 +44,31 @@ public class Fenetre extends JFrame {
 	// combo for form selection
 	private JComboBox<String> comboForm = new JComboBox<String>();
 	private JCheckBox checkBox_morph = new JCheckBox("Morph");
+	private JRadioButton radioB_morph_on = new JRadioButton("Morph ON");
+	private JRadioButton radioB_morph_off = new JRadioButton("morph off");
 
 	public Fenetre() {
 		this.setTitle("Animation");
 		this.setSize(300, 300);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
-		
-		//Menu
+
+		// Menu
 		this.setJMenuBar(menuBar);
 		menuBar.add(animate);
 		animate.add(menuItemGo);
 		animate.add(menuItemStop);
 		animate.addSeparator();
 		animate.add(menuItemExit);
-		
+
 		menuItemGo.addActionListener(new BoutonGoListener());
 		menuItemStop.addActionListener(new BoutonStopListener());
-		
-		menuItemExit.addActionListener(new ActionListener(){
-	        public void actionPerformed(ActionEvent event){
-	          System.exit(0);
-	        }
-	      });
+
+		menuItemExit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				System.exit(0);
+			}
+		});
 
 		// Center container
 		container.setBackground(Color.white);
@@ -100,11 +103,19 @@ public class Fenetre extends JFrame {
 		comboForm.addItem("CERCLE");
 		comboForm.addItem("ETOILE");
 		comboForm.addActionListener(new comboFormListener());
-		
+
 		// add checkbox for morph
 		top.add(checkBox_morph);
 		checkBox_morph.addActionListener(new checkBoxMorphListener());
-		
+
+		// add radio button
+		JPanel topRadio = new JPanel();
+		container.add(topRadio, BorderLayout.EAST);
+		topRadio.add(radioB_morph_off);
+		topRadio.add(radioB_morph_on);
+		radioB_morph_off.addActionListener(new radioBMorphListener());
+		radioB_morph_on.addActionListener(new radioBMorphListener());
+		radioB_morph_off.setSelected(true);
 		this.setContentPane(container);
 		this.setVisible(true);
 		go();
@@ -185,9 +196,33 @@ public class Fenetre extends JFrame {
 	class checkBoxMorphListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			if (checkBox_morph.isSelected())
-				pan.setMorph(true);
+				setMorph(true);
 			else
-				pan.setMorph(false);
+				setMorph(false);
+		}
+	}
+
+	class radioBMorphListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			if (e.getSource() == radioB_morph_on) {
+				setMorph(true);
+			} else {
+				setMorph(false);
+			}
+		}
+	}
+
+	private void setMorph(boolean val) {
+		if (val == true) {
+			pan.setMorph(true);
+			radioB_morph_on.setSelected(true);
+			radioB_morph_off.setSelected(false);
+			checkBox_morph.setSelected(true);
+		} else {
+			radioB_morph_off.setSelected(true);
+			radioB_morph_on.setSelected(false);
+			checkBox_morph.setSelected(false);
+			pan.setMorph(false);
 		}
 	}
 }
